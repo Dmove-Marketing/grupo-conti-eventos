@@ -16,3 +16,10 @@ npm-debug.log*
 .vscode/
 .claude/
 .idea/
+
+# Arquivos internos e de apresentação
+apresentacao-cliente/
+apresentacao-cliente.zip
+_html-originais/
+scratch/
+extract-assets.mjs

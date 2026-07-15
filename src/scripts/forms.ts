@@ -73,6 +73,42 @@ export function initForms() {
         }
       });
 
+      // Validação de formato: email
+      form.querySelectorAll<HTMLInputElement>('input[type="email"]').forEach((field) => {
+        if (!field.value) return; // campo vazio já capturado pelo required acima
+        const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(field.value);
+        if (!ok) {
+          isValid = false;
+          (field as HTMLElement).style.borderColor = '#ef4444';
+          (field as HTMLElement).style.outline = '2px solid #ef4444';
+          if (!firstInvalid) firstInvalid = field;
+          const clear = () => {
+            (field as HTMLElement).style.removeProperty('border-color');
+            (field as HTMLElement).style.removeProperty('outline');
+            field.removeEventListener('input', clear);
+          };
+          field.addEventListener('input', clear);
+        }
+      });
+
+      // Validação de formato: telefone (mínimo 10 dígitos — DDD + número)
+      form.querySelectorAll<HTMLInputElement>('[name="telefone"]').forEach((field) => {
+        if (!field.value) return;
+        const digits = field.value.replace(/\D/g, '');
+        if (digits.length < 10) {
+          isValid = false;
+          (field as HTMLElement).style.borderColor = '#ef4444';
+          (field as HTMLElement).style.outline = '2px solid #ef4444';
+          if (!firstInvalid) firstInvalid = field;
+          const clear = () => {
+            (field as HTMLElement).style.removeProperty('border-color');
+            (field as HTMLElement).style.removeProperty('outline');
+            field.removeEventListener('input', clear);
+          };
+          field.addEventListener('input', clear);
+        }
+      });
+
       if (!isValid) {
         firstInvalid!.scrollIntoView({ behavior: 'smooth', block: 'center' });
         (firstInvalid as HTMLElement).focus();
@@ -111,12 +147,42 @@ export function initForms() {
       const dateStr = now.toLocaleDateString('pt-BR');
       const timeStr = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-      const capitalizedFields: Record<string, string> = {};
+      const payloadFields: Record<string, string> = {};
+      
+      // Separar Nome e Sobrenome do campo único de nome
+      const nomeCompleto = rawData['nome'] || '';
+      const nomeParts = nomeCompleto.trim().split(/\s+/);
+      payloadFields['Nome'] = nomeParts[0] || '';
+      payloadFields['Sobrenome'] = nomeParts.slice(1).join(' ') || '';
+      
+      // WhatsApp (vinda de telefone)
+      payloadFields['WhatsApp'] = rawData['telefone'] || '';
+      
+      // E-mail (com hífen)
+      payloadFields['E-mail'] = rawData['email'] || '';
+      
+      // Tipo de evento (vinda de evento)
+      payloadFields['Tipo de evento'] = rawData['evento'] || '';
+      
+      // Data do evento formatada como DD/MM/AAAA
+      const dataRaw = rawData['data'] || '';
+      let dataFormatada = '';
+      if (dataRaw.includes('-')) {
+        const parts = dataRaw.split('-');
+        if (parts.length === 3) {
+          dataFormatada = `${parts[2]}/${parts[1]}/${parts[0]}`;
+        }
+      } else {
+        dataFormatada = dataRaw;
+      }
+      payloadFields['Data do evento'] = dataFormatada;
+
+      // Outros campos genéricos capitalizados
       let fonteBase = rawData['fonte'] || project;
       Object.entries(rawData).forEach(([key, val]) => {
-        if (key === 'fonte') return;
+        if (['nome', 'telefone', 'email', 'evento', 'data', 'fonte'].includes(key)) return;
         const capKey = key.charAt(0).toUpperCase() + key.slice(1);
-        capitalizedFields[capKey] = val;
+        payloadFields[capKey] = val;
       });
 
       const trackingParamKeys = [
@@ -136,17 +202,19 @@ export function initForms() {
       if (tracking['external_id']) metaCapi['external_id'] = tracking['external_id'];
       if (tracking['event_id'])    metaCapi['event_id']    = tracking['event_id'];
 
+      const formName = form.dataset.formName || formId;
+
       const payload: Record<string, string> = {
-        ...capitalizedFields,
+        ...payloadFields,
         Fonte: fonte,
         Data: dateStr,
         'Horário': timeStr,
         'URL da página': window.location.href,
         'Agente de usuário': navigator.userAgent,
         'IP remoto': '',
-        'Desenvolvido por': 'Dmove',
+        'Desenvolvido por': 'Elementor',
         form_id: formId,
-        form_name: formId,
+        form_name: formName,
         ...metaCapi,
       };
 

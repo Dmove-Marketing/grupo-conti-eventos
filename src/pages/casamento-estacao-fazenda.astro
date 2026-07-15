@@ -1,0 +1,428 @@
+---
+// Duplicado de casamentos.astro — página independente (HTML/CSS/JS próprios, sem compartilhamento)
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import '../styles/casamento-estacao-fazenda.css';
+---
+
+<Base
+  title="Grupo Conti | Três espaços exclusivos para o seu casamento"
+  description="Descubra o cenário ideal para o seu grande dia. Três espaços exclusivos em Jundiaí e Itatiba, com todos os serviços essenciais reunidos em uma única solução."
+  ogImage="/images/og-casamentos.jpg"
+>
+<!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="#topo" class="nav-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Verde.webp" alt="Grupo Conti" /></a>
+    <a href="#contato" class="nav-cta">Solicite orçamento</a>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="topo">
+    <img class="hero-bg" src="https://media.dmove.com.br/clients/grupo-conti/photos/hero-est-fazenda.webp" alt="Casamento Grupo Conti" />
+    <div class="hero-scrim"></div>
+    <div class="hero-content">
+      <span class="hero-tags">Casamento &nbsp;•&nbsp; Jarinu  &nbsp;•&nbsp; São Paulo</span>
+      <h1> Um cenário <br class="mobile-br" />extraordinário <br class="desktop-br" /> <br class="mobile-br" />para o início de <br class="desktop-br" /> <br class="mobile-br" />grandes histórias</h1>
+      <p>Entre montanhas e paisagens naturais, a Estação Fazenda reúne um cenário exclusivo, estrutura completa e atendimento especializado.</p>
+      <div class="hero-ctas">
+        <a href="#contato" class="btn btn-primary">Solicite orçamento</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUTORIDADE ============ -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5M15 15c2.8 0 5 1.7 5 5"/></svg>
+      </div>
+      <span class="stat-value">Até 200 convidados</span>
+    </div>
+    <div class="stat">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 2v3M10.5 3.5h3M4 21V11l8-6 8 6v10"/><path d="M9 21v-7h6v7"/></svg>
+      </div>
+      <span class="stat-value">Capela exclusiva</span>
+    </div>
+    <div class="stat">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      </div>
+      <span class="stat-value">Apenas 1 hora de São Paulo</span>
+    </div>
+  </div>
+
+  <!-- ============ SOBRE ============ -->
+  <section class="about" id="sobre">
+    <div class="about-copy" data-reveal>
+      <span class="eyebrow eyebrow--gold">Sobre</span>
+      <h2>Existem espaços para <br class="mobile-br" />casamento. <br class="desktop-br" />E existem lugares <br class="mobile-br" />que transformam <br class="desktop-br" />toda <br class="mobile-br" />a experiência</h2>
+      <p>A Estação Fazenda foi pensada para que noivos e convidados aproveitem cada momento com conforto, tranquilidade e exclusividade.<br>
+Da cerimônia em meio à natureza à praticidade da hospedagem parceira, localizada a poucos minutos do espaço, cada detalhe contribui para uma celebração mais confortável e tranquila para todos.</p>
+      <a href="#contato" class="btn btn-outline" style="margin-top:26px;align-self:flex-start">Agende uma visita</a>
+    </div>
+    <div class="about-media">
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/sobre-est-fazenda.webp" alt="Estação Fazenda" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- ============ EXPERIÊNCIA ============ -->
+  <section class="section section--navy" id="experiencia">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold-onavy">Experiência Conti</span>
+      <h2>Um cenário que <br class="mobile-br" />impressiona em todos <br class="desktop-br" />os <br class="mobile-br" />momentos do casamento</h2>
+    </div>
+    <div class="exp-grid">
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/natureza-est-fazenda.webp" alt="Natureza preservada" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Natureza preservada</h3>
+          <p>Paisagens abertas e jardins que valorizam cerimônias ao ar livre.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/sala-noiva-est-fazenda.webp" alt="Sala da noiva" loading="lazy" class="img-focus-top" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Sala da Noiva</h3>
+          <p>Um espaço exclusivo que oferece conforto, privacidade e toda a tranquilidade para a preparação do grande dia</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/camarim-noivo-est-fazenda.webp" alt="Camarim do noivo" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Camarim do noivo</h3>
+          <p>Conforto e privacidade para que o noivo aproveite cada momento antes da celebração.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/estrutura-est-fazenda.webp" alt="Estrutura completa" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Estrutura completa</h3>
+          <p>150 vagas, cozinha profissional, salas dos noivos e área kids</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ HOSPEDAGEM ============ -->
+  <section class="hosting" id="hospedagem">
+    <div class="hosting-media">
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/hospedagem-est-fazenda.webp" alt="Hospedagem" loading="lazy" />
+    </div>
+    <div class="hosting-copy" data-reveal>
+      <span class="eyebrow eyebrow--gold">Hospedagem</span>
+      <h2>Mais conforto para vocês e <br />para todos os convidados</h2>
+      <p>Para completar a experiência, a Estação Fazenda oferece uma hospedagem parceira a menos de 5 minutos do espaço, proporcionando mais conforto e tranquilidade para noivos e convidados.</p>
+    </div>
+  </section>
+
+  <!-- ============ ESTRUTURA ============ -->
+  <section class="section section--offwhite" id="estrutura">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Estrutura</span>
+      <h2>Tudo o que faz da <br class="mobile-br" />Estação Fazenda <br class="desktop-br" /> <br class="mobile-br" />um espaço completo</h2>
+      <p class="lede" style="margin-top:22px">Para que vocês possam concentrar o tempo no que realmente importa: celebrar.</p>
+    </div>
+    <div class="structure-grid">
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/></svg>
+        </div>
+        <span>Salão principal com pé-direito alto</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="12" cy="8" r="3"/><circle cx="6" cy="14" r="3"/><circle cx="18" cy="14" r="3"/><path d="M12 21v-6M6 21v-4M18 21v-4"/></svg>
+        </div>
+        <span>Jardins para cerimônia</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 2v3M10.5 3.5h3M4 21V11l8-6 8 6v10"/><path d="M9 21v-7h6v7"/></svg>
+        </div>
+        <span>Capela</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><ellipse cx="12" cy="10" rx="7" ry="9"/><path d="M12 19v3M8 22h8"/></svg>
+        </div>
+        <span>Sala da noiva</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M4 7 10 12 4 17V7ZM20 7 14 12 20 17V7Z"/><circle cx="12" cy="12" r="1.5"/></svg>
+        </div>
+        <span>Sala do noivo</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 2a5 5 0 0 1 5 5c0 3-2 5-3 6.5-.5.8-.5 1.5-.5 2.5h-3c0-1 0-1.7-.5-2.5C8 12 7 10 7 7a5 5 0 0 1 5-5Z"/><path d="M11 16v5M13 16v2"/></svg>
+        </div>
+        <span>Área kids</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M6 21h12M8 21v-6M16 21v-6M6 15a4 4 0 0 1 1-7.9A4.5 4.5 0 0 1 12 4a4.5 4.5 0 0 1 5 3.1A4 4 0 0 1 18 15H6Z"/></svg>
+        </div>
+        <span>Cozinha profissional</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h3.5a2.5 2.5 0 0 1 0 5H9V8zM9 13v5"/></svg>
+        </div>
+        <span>Estacionamento para 150 carros</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M4 21 9 3h6l5 18M8 21l1-4h6l1 4"/><path d="M12 9v2M12 14v2"/></svg>
+        </div>
+        <span>Fácil acesso pela Rodovia</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 18v2M21 18v2M3 13h18"/><circle cx="7" cy="9" r="1.5"/></svg>
+        </div>
+        <span>Hospedagem parceira próxima</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ SOLUÇÃO COMPLETA ============ -->
+  <section class="section section--navy" id="solucao-completa">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold-onavy">Solução completa</span>
+      <h2>Uma solução completa para <br class="desktop-br" />o <br class="mobile-br" />seu grande dia</h2>
+      <p class="lede" style="margin-top:22px">Reúna os principais serviços do casamento em um único lugar, com atendimento especializado, gastronomia própria e uma equipe preparada para acompanhar cada etapa do planejamento.</p>
+    </div>
+    <div class="exp-grid exp-grid--3">
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/gastronomia-propria_resultado.webp" alt="Gastronomia própria" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Gastronomia própria</h3>
+          <p>Assinado pelo <b>Chef Evandro Luiz</b>, o buffet próprio da Conti combina qualidade, personalização e excelência para criar uma experiência gastronômica à altura do seu casamento.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/at-consultivo-est-fazenda.webp" alt="Atendimento consultivo" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Atendimento consultivo</h3>
+          <p> Do primeiro contato ao grande dia, nossa equipe acompanha cada etapa do planejamento, oferecendo mais segurança, praticidade e tranquilidade durante toda a jornada.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/estrutura-integrada-est-fazenda.webp" alt="Estrutura integrada" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Estrutura integrada</h3>
+          <p>Espaço, buffet, decoração, iluminação, sonorização, mobiliário e diversos serviços reunidos para tornar a organização do casamento muito mais simples.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ DEPOIMENTOS ============ -->
+  <section class="testimonials" id="depoimentos">
+    <div class="center" data-reveal style="max-width:760px">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>Descubra por que <br class="mobile-br" />tantos casais <br class="desktop-br" />escolheram <br class="mobile-br" />a Estação Fazenda</h2>
+    </div>
+    <div class="testi-controls">
+      <button class="testi-btn testi-prev" id="testiPrev" aria-label="Anterior">‹</button>
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <p>"Maravilhosos! Desde o dia em que fomos visitar o local, fomos surpreendidos positivamente e a cada dia, surpreendiam mais ainda. Equipe extremamente atenciosa e prestativa, buffet impecável e sempre dispostos a ajudar. Recomendo 100%."</p>
+          <span>Marian Camargo</span>
+        </div>
+        <div class="testi-card">
+          <p>"Melhor buffet do mundo. Lindo, maravilhoso, perfeito é a descrição exata! Não há buffet melhor do que o Estação Fazenda. O espaço então, nem se fale, já era lindo, agora com as reformas que tiveram, ficou mais ainda."</p>
+          <span>Brenda Letícia</span>
+        </div>
+        <div class="testi-card">
+          <p>"O espaço é incrível, depois da reforma ficou ainda mais lindo! Recomendo a todos a cerimônia no jardim, porque fica simplesmente linda. A comida é maravilhosa, meus parabéns ao Chefe Evandro! Todos os convidados, sem exceção, elogiaram a comida. São muito flexíveis, pois havia convidados veganos em meu casamento e o Evandro adaptou um prato para eles, eles simplesmente amaram."</p>
+          <span>Marina Silva</span>
+        </div>
+        <div class="testi-card">
+          <p>"O lugar é lindo e a comida sensacional! Foi simplesmente sensacional! Os convidados amaram o lugar e a comida. O lugar é perfeito pra quem deseja casamento ao ar livre. Foi realmente um sonho."</p>
+          <span>Mary Oliveira</span>
+        </div>
+        <div class="testi-card">
+          <p>"Excelente experiência. O lugar é lindo! Rústico, aconchegante, cercado de belas paisagens que rendem excelentes fotos. Internamente é acolhedor, espetacularmente lindo, com temperatura muito agradável. O Buffet é delicioso, recebemos muitos elogios por conta do serviço."</p>
+          <span>Anderson Lima</span>
+        </div>
+        <div class="testi-card">
+          <p>"Perfeitos! Executam o serviço com maestria, não medem esforços para que tudo saia perfeito. Pessoal todo está de parabéns, só elogios dos convidados quanto ao atendimento e qualidade dos alimentos. Adoramos."</p>
+          <span>Isadora Santos</span>
+        </div>
+      </div>
+      <button class="testi-btn testi-next" id="testiNext" aria-label="Próximo">›</button>
+    </div>
+  </section>
+
+  <!-- ============ GALERIA ============ -->
+  <section class="section section--cream" id="galeria" style="padding-bottom:48px">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Galeria</span>
+      <h2>Conheça o cenário que pode <br class="mobile-br" />receber <br class="desktop-br" />a sua história</h2>
+    </div>
+  </section>
+  <div class="gallery-carousel">
+    <div class="gallery-track">
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda03_resultado.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda20.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda19.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda18.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda17.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda16.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda15.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda14.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda13.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda12.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda11.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda10.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda09.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda08.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda07.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda06.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda05.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda04.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda02.JPG.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-est-fazenda01.webp" alt="Estação Fazenda" loading="lazy" />
+    </div>
+  </div>
+
+  <!-- ============ CONTATO ============ -->
+  <section class="contact" id="contato">
+    <div class="contact-info" data-reveal>
+      <span class="eyebrow eyebrow--gold">Próximo passo</span>
+      <h2>Estamos prontos para <br class="mobile-br" />conhecer a história que <br class="mobile-br" />vocês querem celebrar</h2>
+      <p>Preencha o formulário e receba um atendimento personalizado para tirar dúvidas, conhecer o espaço e planejar cada detalhe do seu casamento.</p>
+    </div>
+    <div class="contact-form-wrap">
+      <form
+        id="contactForm"
+        data-form-id="lead-form"
+        data-project={config.project_slug}
+        data-submit-url={config.forms['lead-form'].webhooks[0]}
+        data-redirect={config.forms['lead-form'].redirect_on_success}
+        data-grid-id="contactForm"
+        data-success-id="formConfirm"
+        novalidate
+      >
+        <div class="hp-field" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+          <label for="contactForm_website">Deixe este campo em branco</label>
+          <input type="text" id="contactForm_website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="form-grid">
+          <div class="field field--full">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome completo" required>
+          </div>
+          <div class="field">
+            <label for="telefone">Telefone</label>
+            <input id="telefone" name="telefone" type="tel" placeholder="(11) 9 0000-0000" required>
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="seu@email.com" required>
+          </div>
+          <div class="field">
+            <label for="data">Data do evento</label>
+            <input id="data" name="data" type="date">
+          </div>
+          <div class="field">
+            <label for="convidados">Nº de convidados</label>
+            <input id="convidados" name="convidados" type="number" min="1" placeholder="Nº de pessoas">
+          </div>
+          <div class="field field--full">
+            <label for="evento">Tipo de evento</label>
+            <select id="evento" name="evento" required>
+              <option value="" disabled selected>Selecione o tipo de evento</option>
+              <option value="Bodas">Bodas</option>
+              <option value="Casamento">Casamento</option>
+              <option value="Confraternização social">Confraternização social</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block form-submit" style="margin-top:22px">
+          <span class="btn-text">Solicitar Orçamento</span>
+          <span class="btn-loading" style="display:none; align-items: center; justify-content: center; gap: 8px;">
+            <svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+            </svg>
+            Enviando...
+          </span>
+        </button>
+        <p class="form-note">Seus dados são usados apenas para retorno de contato e orçamento.</p>
+        <div class="form-error" style="color: #ef4444; font-size: 0.875rem; margin-top: 4px; display: none;"></div>
+      </form>
+      <div class="form-confirm" id="formConfirm">
+        <h3>Recebemos sua solicitação!</h3>
+        <p>Em breve nossa equipe entrará em contato para dar continuidade ao planejamento do seu casamento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOCALIZAÇÃO ============ -->
+  <section class="section section--offwhite" id="localizacao">
+    <div class="center--wide" data-reveal>
+      <span class="eyebrow eyebrow--gold">Localização</span>
+      <h2>Um cenário que faz <br class="mobile-br" />cada quilômetro <br class="desktop-br" /> <br class="mobile-br" />valer a pena</h2>
+    </div>
+    <div class="location-grid">
+
+      <div class="location-card" data-reveal>
+        <h3>Estação Fazenda</h3>
+        <address>Estr. Mun. Natal Lorencini - Pitangal, Jarinu - SP, 13240-000</address>
+        <div class="location-map">
+          <iframe src="https://maps.google.com/maps?q=Estr.%20Mun.%20Natal%20Lorencini%20-%20Pitangal%2C%20Jarinu%20-%20SP%2C%2013240-000&t=m&z=15&output=embed&iwloc=near" title="Estação Fazenda — Localização" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <a href="#topo" class="footer-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Claro.webp" alt="Grupo Conti" /></a>
+    <p class="footer-copy">© 2026 Grupo Conti — Todos os direitos reservados.</p>
+    <div class="footer-dev">
+      <span>Desenvolvido por:</span>
+      <a href="http://dmove.com.br" target="_blank" rel="noopener noreferrer">
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logotipo-dmove.webp" alt="DMove" style="height: 18px; width: auto; display: inline-block; vertical-align: middle;" />
+      </a>
+    </div>
+  </footer>
+
+</Base>
+<script>
+  import { initForms } from '../scripts/forms.ts';
+  import '../scripts/casamento-estacao-fazenda.js';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initForms);
+  } else {
+    initForms();
+  }
+</script>

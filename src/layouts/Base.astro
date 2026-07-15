@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import 'flatpickr/dist/flatpickr.min.css';
 import '@fontsource/montserrat/200.css';
 import '@fontsource/montserrat/300.css';
 import '@fontsource/montserrat/400.css';
@@ -10,6 +11,20 @@ import '@fontsource/montserrat/800.css';
 import GTMHead from '../components/tracking/GTMHead.astro';
 import GTMBody from '../components/tracking/GTMBody.astro';
 import UTMCapture from '../components/tracking/UTMCapture.astro';
+import WhatsAppModal from '../components/layout/WhatsAppModal.astro';
+
+interface WhatsAppStep1Field {
+  name: string;
+  type: 'text' | 'email' | 'tel' | 'number' | 'select' | 'textarea' | 'date' | 'radio';
+  label?: string;
+  placeholder?: string;
+  required?: boolean;
+  options?: { value: string; label: string; disabled?: boolean; selected?: boolean }[];
+  value?: string;
+  min?: string;
+  max?: string;
+  rows?: number;
+}
 
 interface Props {
   title: string;
@@ -19,6 +34,10 @@ interface Props {
   noIndex?: boolean;
   theme?: 'dark' | 'light';
   jsonLd?: Record<string, any>;
+  /** Campos da etapa 1 do popup WhatsApp — mesmas opções do LeadForm da página */
+  whatsAppStep1Fields?: WhatsAppStep1Field[];
+  /** Mensagem de boas-vindas do popup WhatsApp (use \n para quebrar linha) */
+  whatsAppMessage?: string;
 }
 
 const {
@@ -29,6 +48,8 @@ const {
   noIndex = false,
   theme = 'dark',
   jsonLd,
+  whatsAppStep1Fields,
+  whatsAppMessage,
 } = Astro.props;
 
 import config from '../../config.json';
@@ -87,7 +108,37 @@ const defaultJsonLd = {
     <!-- Conteúdo da página -->
     <slot />
 
+    <!-- WhatsApp Flutuante — configurar em config.json > whatsapp -->
+    <WhatsAppModal
+      step1Fields={whatsAppStep1Fields}
+      welcomeMessage={whatsAppMessage}
+    />
+
     <!-- Scripts adicionais -->
     <slot name="scripts" />
+
+    <script>
+      import flatpickr from 'flatpickr';
+      import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // Garantir placeholder nos inputs originais para que o Flatpickr herde no altInput
+        document.querySelectorAll('input[type="date"]').forEach(input => {
+          if (!input.getAttribute('placeholder')) {
+            input.setAttribute('placeholder', 'DD/MM/AAAA');
+          }
+        });
+
+        flatpickr('input[type="date"]', {
+          locale: Portuguese,
+          dateFormat: 'Y-m-d',
+          altInput: true,
+          altFormat: 'd/m/Y',
+          allowInput: true,
+          disableMobile: true,
+          altInputClass: 'flatpickr-input-alt form-control input'
+        });
+      });
+    </script>
   </body>
 </html>

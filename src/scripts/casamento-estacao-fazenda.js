@@ -1,0 +1,97 @@
+/* Scripts da página Casamento Estação Fazenda (duplicado de casamentos.js — não compartilhar entre as páginas) */
+
+(function(){
+  // ---- nav: padding + fundo ao rolar ----
+  var nav = document.getElementById('nav');
+  function onScroll(){
+    if(window.scrollY > 30){ nav.classList.add('is-scrolled'); }
+    else { nav.classList.remove('is-scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // ---- reveal on scroll ----
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold:0.12 });
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // ---- carrossel de depoimentos ----
+  var track = document.getElementById('testiTrack');
+  if (track) {
+    var prevBtn = document.getElementById('testiPrev');
+    var nextBtn = document.getElementById('testiNext');
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', function(){
+        track.scrollBy({ left: -(track.clientWidth*0.8), behavior:'smooth' });
+      });
+      nextBtn.addEventListener('click', function(){
+        track.scrollBy({ left: (track.clientWidth*0.8), behavior:'smooth' });
+      });
+    }
+  }
+
+  // ---- carrossel da galeria no mobile ----
+  var galleryCarousel = document.querySelector('.gallery-carousel');
+  var galleryTrack = document.querySelector('.gallery-track');
+  var gallerySlides = document.querySelectorAll('.gallery-track img');
+  if (galleryCarousel && galleryTrack && gallerySlides.length > 0) {
+    var galleryIndex = 0;
+
+    function updateGallery() {
+      if (window.innerWidth <= 768) {
+        galleryTrack.style.transform = 'translateX(' + (-galleryIndex * 100) + '%)';
+      } else {
+        galleryTrack.style.transform = 'none';
+      }
+    }
+
+    // Touch support for mobile swipe
+    var gStartX = 0;
+    var gIsSwiping = false;
+
+    galleryCarousel.addEventListener('touchstart', function(e) {
+      if (window.innerWidth > 768) return;
+      gStartX = e.touches[0].clientX;
+      gIsSwiping = true;
+    }, { passive: true });
+
+    galleryCarousel.addEventListener('touchend', function(e) {
+      if (!gIsSwiping || window.innerWidth > 768) return;
+      var diffX = e.changedTouches[0].clientX - gStartX;
+      if (Math.abs(diffX) > 40) { // threshold of 40px
+        if (diffX > 0) {
+          // Swipe right -> show previous
+          if (galleryIndex > 0) {
+            galleryIndex--;
+          } else {
+            galleryIndex = gallerySlides.length - 1;
+          }
+        } else {
+          // Swipe left -> show next
+          if (galleryIndex < gallerySlides.length - 1) {
+            galleryIndex++;
+          } else {
+            galleryIndex = 0;
+          }
+        }
+        updateGallery();
+      }
+      gIsSwiping = false;
+    });
+
+    // Handle screen resize to reset transform on desktop
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 768) {
+        galleryIndex = 0;
+        galleryTrack.style.transform = '';
+      }
+    });
+  }
+})();

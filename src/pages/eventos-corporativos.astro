@@ -1,0 +1,565 @@
+---
+// Duplicado de casamentos.astro — página independente (HTML/CSS/JS próprios, sem compartilhamento)
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import '../styles/eventos-corporativos.css';
+
+const whatsAppStep1Fields = [
+  {
+    name: 'tipo_evento',
+    type: 'select' as const,
+    required: true,
+    options: [
+      { value: '', label: 'Selecione o tipo de evento', disabled: true, selected: true },
+      { value: 'Convenção', label: 'Convenção' },
+      { value: 'Treinamento', label: 'Treinamento' },
+      { value: 'Confraternização', label: 'Confraternização' },
+      { value: 'Lançamento de produto', label: 'Lançamento de produto' },
+      { value: 'Workshop', label: 'Workshop' },
+      { value: 'Evento de relacionamento', label: 'Evento de relacionamento' },
+      { value: 'Premiação', label: 'Premiação' },
+      { value: 'Encontro comercial', label: 'Encontro comercial' },
+      { value: 'Festa de final de ano', label: 'Festa de final de ano' },
+      { value: 'Outros', label: 'Outros' },
+    ],
+  },
+];
+---
+
+<Base
+  title="Grupo Conti | Espaços para Eventos Corporativos em Jundiaí e Itatiba"
+  description="Três espaços exclusivos para eventos corporativos, com infraestrutura completa, gastronomia própria e equipe especializada para cuidar de toda a operação. Solicite um orçamento."
+  ogImage="/images/og-eventos-corporativos.jpg"
+  whatsAppStep1Fields={whatsAppStep1Fields}
+  whatsAppMessage={"Olá! Vamos planejar o seu evento corporativo?\nConte um pouco sobre o que você precisa e nossa equipe te ajuda com o orçamento."}
+>
+<!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="#topo" class="nav-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Verde.webp" alt="Grupo Conti" /></a>
+    <a href="#contato" class="nav-cta">Solicite orçamento</a>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="topo">
+    <img class="hero-bg" src="https://media.dmove.com.br/clients/grupo-conti/photos/hero-corporativo.webp" alt="Eventos Corporativos Grupo Conti" />
+    <div class="hero-scrim"></div>
+    <div class="hero-content">
+      <span class="hero-tags">Eventos Corporativos &nbsp;•&nbsp; Jundiaí e Itatiba &nbsp;•&nbsp; São Paulo</span>
+      <h1>Eventos corporativos <br class="mobile-br" />com <br class="desktop-br" />eficiência, <br class="mobile-br" />excelência e <br class="desktop-br" /><br class="mobile-br" />impacto real</h1>
+      <p>Três espaços preparados para eventos empresariais, com infraestrutura completa, gastronomia própria e uma equipe especializada para cuidar de toda a operação.</p>
+      <div class="hero-ctas">
+        <a href="#contato" class="btn btn-primary">Solicite orçamento</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUTORIDADE ============ -->
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-value">03</span>
+      <span class="stat-label">espaços exclusivos</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">+10</span>
+      <span class="stat-label">anos de experiência</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">+1000</span>
+      <span class="stat-label">eventos realizados</span>
+    </div>
+  </div>
+
+  <!-- ============ EVENTOS (tipos de evento) ============ -->
+  <section class="section section--cream" id="eventos">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Para quem organiza eventos</span>
+      <h2>Perfeito para empresas,<br class="mobile-br" /> agências<br class="desktop-br" /> e organizadores<br class="mobile-br" /> de eventos</h2>
+    </div>
+    <div class="icons-grid">
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg>
+        </div>
+        <span>Convenções</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-5.5"/></svg>
+        </div>
+        <span>Treinamentos</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M7 2 5 9a3 3 0 1 0 4 0L7 2ZM17 2l-2 7a3 3 0 1 0 4 0l-2-7Z"/><path d="M7 12v9M17 12v9M4 21h6M14 21h6"/></svg>
+        </div>
+        <span>Confraternizações</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 2c3 2 5 6 5 10 0 2-1 4-2 5l-3 3-3-3c-1-1-2-3-2-5 0-4 2-8 5-10Z"/><circle cx="12" cy="10" r="1.5"/><path d="M9 17l-3 4M15 17l3 4"/></svg>
+        </div>
+        <span>Lançamentos de produtos</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2-2 2.5-2.5Z"/></svg>
+        </div>
+        <span>Workshops</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="8" cy="12" r="4"/><circle cx="16" cy="12" r="4"/></svg>
+        </div>
+        <span>Eventos de relacionamento</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M8 4h8v4a4 4 0 0 1-8 0V4Z"/><path d="M8 5H4v2a4 4 0 0 0 4 4M16 5h4v2a4 4 0 0 1-4 4"/><path d="M12 13v4M9 21h6M10 17h4v4h-4v-4Z"/></svg>
+        </div>
+        <span>Premiações</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg>
+        </div>
+        <span>Encontros comerciais</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 2l2.9 6.6L22 9.3l-5 4.9 1.2 7.1L12 17.8 5.8 21.3 7 14.2 2 9.3l7.1-.7L12 2Z"/></svg>
+        </div>
+        <span>Festas de final de ano</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ ESPAÇOS ============ -->
+  <section class="section section--offwhite" id="espacos">
+    <div class="center" data-reveal style="max-width: 960px;">
+      <span class="eyebrow eyebrow--gold">Espaços</span>
+      <h2>Três espaços.<br class="desktop-br" /><br class="mobile-br" />O mesmo compromisso<br class="mobile-br" /> com a excelência</h2>
+    </div>
+    <div class="venues-grid">
+
+      <div class="venue-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/santa-isabel-corporativo.webp" alt="Fazenda Santa Isabel" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center bottom !important; display: block;" />
+        <div class="venue-body">
+          <span class="venue-meta">250 convidados · Itatiba</span>
+          <h3>Fazenda Santa Isabel</h3>
+          <p>Casarão histórico cercado por amplos jardins e áreas abertas que unem elegância e versatilidade para convenções, confraternizações, eventos institucionais e encontros corporativos de médio e grande porte.</p>
+          <a href="#contato" class="btn btn-outline">Agende uma visita</a>
+        </div>
+      </div>
+
+      <div class="venue-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/estacao-fazenda-corporativo.webp" alt="Estação Fazenda" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="venue-body">
+          <span class="venue-meta">200 convidados · Jarinu</span>
+          <h3>Estação Fazenda</h3>
+          <p>Arquitetura rústica, amplas áreas verdes e infraestrutura completa para treinamentos, convenções, integrações de equipes e eventos empresariais que buscam um ambiente diferenciado.</p>
+          <a href="#contato" class="btn btn-outline">Agende uma visita</a>
+        </div>
+      </div>
+
+      <div class="venue-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/recanto-palmeiras-corporativo.webp" alt="Recanto das Palmeiras" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="venue-body">
+          <span class="venue-meta">200 convidados · Jundiaí</span>
+          <h3>Recanto das Palmeiras</h3>
+          <p>Espaço cercado pela natureza, com lago ornamental, jardins e salão amplo para receber confraternizações, eventos corporativos e experiências de relacionamento em um ambiente acolhedor.</p>
+          <a href="#contato" class="btn btn-outline">Agende uma visita</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ EXPERIÊNCIA ============ -->
+  <section class="section section--navy" id="experiencia">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold-onavy">Experiência Conti</span>
+      <h2>Sua equipe<br class="mobile-br" /> aproveita o evento.<br class="desktop-br" /><br class="mobile-br" />Nós cuidamos da operação</h2>
+      <p class="lede" style="margin-top:22px">Da estrutura ao buffet, você conta com uma equipe especializada para coordenar todos os detalhes do evento com organização, agilidade e segurança.</p>
+    </div>
+    <div class="exp-grid">
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/gastronomia-propria-corporativo.JPG.webp" alt="Gastronomia própria" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Gastronomia própria</h3>
+          <p>Buffet próprio assinado pelo <b>Chef Evandro Luiz</b>, com cardápios personalizados para cafés da manhã, almoços executivos, coquetéis, confraternizações e eventos corporativos.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/atendimento-consultivo-corporativo.webp" alt="Atendimento consultivo" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Atendimento consultivo</h3>
+          <p>Planejamento próximo e acompanhamento desde o orçamento até o encerramento do evento.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/estrutura-integrada-corporativo.webp" alt="Estrutura integrada" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Estrutura integrada</h3>
+          <p>Espaço, buffet, mobiliário, decoração, sonorização, iluminação e fornecedores reunidos em uma única operação.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/flexibilidade-corporativo.webp" alt="Flexibilidade para diferentes formatos" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Flexibilidade para diferentes formatos</h3>
+          <p>Espaços adaptáveis para palestras, treinamentos, workshops, convenções e eventos de relacionamento.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ ESTRUTURA ============ -->
+  <section class="section section--cream" id="estrutura">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Estrutura</span>
+      <h2>Eficiência para<br class="mobile-br" /> quem organiza.<br class="desktop-br" /><br class="mobile-br" />Conforto para<br class="mobile-br" /> quem participa</h2>
+      <p class="lede" style="margin-top:22px">Uma estrutura completa, com ambientes versáteis e serviços que contribuem para o sucesso do seu evento.</p>
+    </div>
+    <div class="structure-grid">
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M14 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0Z"/></svg>
+        </div>
+        <span>Ambientes climatizados</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M6 3v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3M8 13v8M16 13v8M4 21h4M16 21h4"/></svg>
+        </div>
+        <span>Mobiliário</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M3 11h18M5 11a7 7 0 0 1 14 0M12 3v2M4 21h16"/></svg>
+        </div>
+        <span>Buffet próprio</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M5 3h14l-7 8-7-8zM12 11v10M8 21h8"/></svg>
+        </div>
+        <span>Bar de drinks</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+        </div>
+        <span>Som e iluminação</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5M15 15c2.8 0 5 1.7 5 5"/></svg>
+        </div>
+        <span>Equipe operacional</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h3.5a2.5 2.5 0 0 1 0 5H9V8zM9 13v5"/></svg>
+        </div>
+        <span>Estacionamento</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ DIFERENCIAIS ============ -->
+  <section class="split">
+    <div class="split-media">
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/diferenciais-corporativo.webp" alt="Diferenciais Grupo Conti" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+    <div class="split-copy" data-reveal>
+      <span class="eyebrow eyebrow--gold">Diferenciais</span>
+      <h2>Simplifique a organização<br class="desktop-br" /><br class="mobile-br" />do seu evento</h2>
+      <p>Centralize os principais serviços em um único fornecedor e simplifique a organização do seu evento, com mais agilidade, menos burocracia e uma operação integrada.</p>
+    </div>
+  </section>
+
+  <!-- ============ PARCEIROS ============ -->
+  <section class="section section--offwhite" id="parceiros" style="padding-bottom:80px">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Parceiros</span>
+      <h2>Empresas que confiaram<br class="desktop-br" /><br class="mobile-br" />seus eventos à Conti</h2>
+    </div>
+    <div class="partners-track" data-reveal>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/bbc-logo-corporativo.webp" alt="BBC" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Wetn-Wild-logo-corporativo.webp" alt="Wet'n Wild" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/vedacit-logo-corporativo.webp" alt="Vedacit" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/UOL-logo-corporativo.webp" alt="UOL" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/skeelo-logo-corporativo.webp" alt="Skeelo" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/renal-logo-corporativo.webp" alt="Renal" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/manzini-logo-corporativo.webp" alt="Manzini" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/LanXess-logo-corporativo.webp" alt="LANXESS" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/knauf-logo-corporativo.webp" alt="Knauf" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/dcbm-logo-corporativo.webp" alt="DCBM" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/codinter-logo-corporativo.webp" alt="Codinter" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/papion-logo-corporativo.webp" alt="Papion" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/hexis-logo-corporativo.webp" alt="Hexis" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/dana-logo-corporativo.webp" alt="Dana" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/castelo-logo-corporativo.webp" alt="Castelo" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/bosch-logo-corporativo.webp" alt="Bosch" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/logo-azul-corporativo.webp" alt="Azul" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/logo-agc-corporativo.webp" alt="AGC" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+    </div>
+  </section>
+
+  <!-- ============ DEPOIMENTOS ============ -->
+  <!-- depoimentos reaproveitados de casamentos.astro (avaliações genéricas sobre os espaços) —
+       substituir por avaliações Google específicas de eventos corporativos assim que o cliente enviar -->
+  <section class="testimonials" id="depoimentos">
+    <div class="center" data-reveal style="max-width:960px">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>A confiança de quem<br class="mobile-br" /> já realizou<br class="desktop-br" /><br class="mobile-br" />grandes eventos</h2>
+    </div>
+    <div class="testi-controls">
+      <button class="testi-btn testi-prev" id="testiPrev" aria-label="Anterior">‹</button>
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <p>"Maravilhosos! Desde o dia em que fomos visitar o local, fomos surpreendidos positivamente. A equipe é extremamente atenciosa, prestativa e sempre disposta a ajudar em cada detalhe da organização."</p>
+          <span>Marian</span>
+        </div>
+        <div class="testi-card">
+          <p>"A comida é deliciosa e de altíssima qualidade. Todos os nossos convidados, sem exceção, elogiaram muito o buffet. Além disso, a equipe teve muita presteza em adaptar o cardápio para restrições alimentares."</p>
+          <span>Marina</span>
+        </div>
+        <div class="testi-card">
+          <p>"O espaço conta com um plano A e B excelentes caso chova, sendo muito bem planejado. Não tivemos nenhuma preocupação com o clima, pois a estrutura coberta e a área aberta são igualmente incríveis."</p>
+          <span>Flavia</span>
+        </div>
+        <div class="testi-card">
+          <p>"Lugar maravilhoso, espaçoso e muito aconchegante. Toda a equipe é super alinhada e pronta para servir, o que garantiu que a nossa programação fluísse sem nenhum tipo de atraso ou imprevisto."</p>
+          <span>Fernando</span>
+        </div>
+        <div class="testi-card">
+          <p>"O espaço é espetacular e muito moderno. A facilidade de ter o buffet completo, som, iluminação e assessoria inclusos no mesmo pacote facilitou demais o nosso planejamento e reduziu muito o estresse da organização."</p>
+          <span>Amanda</span>
+        </div>
+        <div class="testi-card">
+          <p>"O salão principal é amplo e perfeito para palestras e dinâmicas de grupo, enquanto a área externa com muito verde ajuda demais no momento de descompressão dos participantes. Um ambiente muito versátil."</p>
+          <span>Ricardo</span>
+        </div>
+        <div class="testi-card">
+          <p>"A estrutura é impecável. O estacionamento é amplo e de fácil acesso para os carros e ônibus fretados, e o suporte que recebemos da equipe local do início ao fim foi excelente."</p>
+          <span>Priscila</span>
+        </div>
+        <div class="testi-card">
+          <p>"Desde o primeiro contato o atendimento foi impecável e muito atencioso. A equipe de apoio no dia mostrou um extremo profissionalismo, deixando todos muito confortáveis."</p>
+          <span>Rafaela</span>
+        </div>
+        <div class="testi-card">
+          <p>"Escolhemos o local pela excelente estrutura de hospedagem e pela oportunidade de fazer uma imersão completa na natureza. A casa sede histórica é maravilhosa e muito bem cuidada."</p>
+          <span>Daniela</span>
+        </div>
+        <div class="testi-card">
+          <p>"Lugar lindo, amplo e muito aconchegante. A flexibilidade de usar os gramados para dinâmicas ao ar livre e o salão principal para as reuniões formais atendeu perfeitamente ao que precisávamos."</p>
+          <span>Helen</span>
+        </div>
+      </div>
+      <button class="testi-btn testi-next" id="testiNext" aria-label="Próximo">›</button>
+    </div>
+  </section>
+
+  <!-- ============ GALERIA ============ -->
+  <section class="section section--cream" id="galeria" style="padding-bottom:48px">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Galeria</span>
+      <h2>Veja como nossos<br class="mobile-br" /> espaços recebem<br class="desktop-br" /><br class="mobile-br" />eventos corporativos</h2>
+    </div>
+  </section>
+  <div class="gallery-carousel">
+    <div class="gallery-track">
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo27.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo26.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo25.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo24.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo22.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo21.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo20.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo19.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo17.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo16.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo15.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo14.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo13.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo08.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo07.JPG.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo06.JPG.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo05.JPEG.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo02.JPG.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo01.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo11.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo10.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo09.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo03.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-corporativo04.webp" alt="Eventos Corporativos Grupo Conti" loading="lazy" />
+    </div>
+  </div>
+
+  <!-- ============ CONTATO ============ -->
+  <section class="contact" id="contato">
+    <div class="contact-info" data-reveal>
+      <span class="eyebrow eyebrow--gold">Próximo passo</span>
+      <h2>Vamos começar <br class="mobile-br" />seu próximo <br />evento corporativo?</h2>
+      <p>Preencha o formulário e receba orçamento personalizado para sua empresa.</p>
+    </div>
+    <div class="contact-form-wrap">
+      <form
+        id="contactForm"
+        data-form-id="lead-form"
+        data-project={config.project_slug}
+        data-submit-url={config.forms['lead-form'].webhooks[0]}
+        data-redirect={config.forms['lead-form'].redirect_on_success}
+        data-grid-id="contactForm"
+        data-success-id="formConfirm"
+        novalidate
+      >
+        <div class="hp-field" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+          <label for="contactForm_website">Deixe este campo em branco</label>
+          <input type="text" id="contactForm_website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="form-grid">
+          <div class="field field--full">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome completo" required>
+          </div>
+          <div class="field">
+            <label for="telefone">Telefone</label>
+            <input id="telefone" name="telefone" type="tel" placeholder="(11) 9 0000-0000" required>
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="seu@email.com" required>
+          </div>
+          <div class="field field--full">
+            <label for="empresa">Empresa</label>
+            <input id="empresa" name="empresa" type="text" placeholder="Nome da sua empresa" required>
+          </div>
+          <div class="field">
+            <label for="data">Data do evento</label>
+            <input id="data" name="data" type="date">
+          </div>
+          <div class="field">
+            <label for="convidados">Nº de convidados</label>
+            <input id="convidados" name="convidados" type="number" min="1" placeholder="Nº de pessoas">
+          </div>
+          <div class="field field--full">
+            <label for="evento">Tipo de evento</label>
+            <select id="evento" name="evento" required>
+              <option value="" disabled selected>Selecione o tipo de evento</option>
+              <option value="Confraternização corporativo">Confraternização corporativo</option>
+              <option value="Corporativo">Corporativo</option>
+              <option value="Feiras e Exposições">Feiras e Exposições</option>
+              <option value="Masterclass e Palestras">Masterclass e Palestras</option>
+              <option value="Mentorias e Treinamentos">Mentorias e Treinamentos</option>
+              <option value="Offsite corporativo">Offsite corporativo</option>
+              <option value="Reuniões de Networking">Reuniões de Networking</option>
+              <option value="Workshops, Conferências e Seminários">Workshops, Conferências e Seminários</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block form-submit" style="margin-top:22px">
+          <span class="btn-text">Solicitar Orçamento</span>
+          <span class="btn-loading" style="display:none; align-items: center; justify-content: center; gap: 8px;">
+            <svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+            </svg>
+            Enviando...
+          </span>
+        </button>
+        <p class="form-note">Seus dados são usados apenas para retorno de contato e orçamento.</p>
+        <div class="form-error" style="color: #ef4444; font-size: 0.875rem; margin-top: 4px; display: none;"></div>
+      </form>
+      <div class="form-confirm" id="formConfirm">
+        <h3>Recebemos sua solicitação!</h3>
+        <p>Em breve nossa equipe entrará em contato para dar continuidade ao planejamento do seu evento corporativo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOCALIZAÇÃO ============ -->
+  <section class="section section--offwhite" id="localizacao">
+    <div class="center--wide" data-reveal>
+      <span class="eyebrow eyebrow--gold">Localização</span>
+      <h2>Três espaços estrategicamente localizados<br>para receber seu evento</h2>
+    </div>
+    <div class="location-grid">
+
+      <div class="location-card" data-reveal>
+        <h3>Estação Fazenda</h3>
+        <address>Estr. Mun. Natal Lorencini - Pitangal, Jarinu - SP, 13240-000</address>
+        <div class="location-map">
+          <iframe src="https://maps.google.com/maps?q=Estr.%20Mun.%20Natal%20Lorencini%20-%20Pitangal%2C%20Jarinu%20-%20SP%2C%2013240-000&t=m&z=15&output=embed&iwloc=near" title="Estação Fazenda — Localização" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="location-card" data-reveal>
+        <h3>Recanto das Palmeiras</h3>
+        <address>Rua Miguel Munhoz 100 Caxambu - Jardim Molinari, Jundiaí - SP, 13218-651</address>
+        <div class="location-map">
+          <iframe src="https://maps.google.com/maps?q=Rua%20Miguel%20Munhoz%20100%20Caxambu%20-%20Jardim%20Molinari%2C%20Jundia%C3%AD%20-%20SP%2C%2013218-651&t=m&z=15&output=embed&iwloc=near" title="Recanto das Palmeiras — Localização" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="location-card" data-reveal>
+        <h3>Fazenda Santa Isabel</h3>
+        <address>Rod. Romildo Prado, 100 - Km 13 - Itapema, Itatiba - SP, 13255-750</address>
+        <div class="location-map">
+          <iframe src="https://maps.google.com/maps?q=Rod.%20Romildo%20Prado%2C%20100%20-%20Km%2013%20-%20Itapema%2C%20Itatiba%20-%20SP%2C%2013255-750&t=m&z=15&output=embed&iwloc=near" title="Fazenda Santa Isabel — Localização" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <a href="#topo" class="footer-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Claro.webp" alt="Grupo Conti" /></a>
+    <p class="footer-copy">© 2026 Grupo Conti — Todos os direitos reservados.</p>
+    <div class="footer-dev">
+      <span>Desenvolvido por:</span>
+      <a href="http://dmove.com.br" target="_blank" rel="noopener noreferrer">
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logotipo-dmove.webp" alt="DMove" style="height: 18px; width: auto; display: inline-block; vertical-align: middle;" />
+      </a>
+    </div>
+  </footer>
+
+</Base>
+<script>
+  import { initForms } from '../scripts/forms.ts';
+  import '../scripts/eventos-corporativos.js';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initForms);
+  } else {
+    initForms();
+  }
+</script>
