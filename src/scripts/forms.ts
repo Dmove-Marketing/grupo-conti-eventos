@@ -42,8 +42,7 @@ export function initForms() {
       }
     });
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    const handleSubmit = async () => {
 
       const hp = form.querySelector<HTMLInputElement>('[name="website"]');
       if (hp && hp.value) return;
@@ -115,7 +114,7 @@ export function initForms() {
         return;
       }
 
-      const submitBtn  = form.querySelector<HTMLButtonElement>('.form-submit, [type="submit"]');
+      const submitBtn  = form.querySelector<HTMLButtonElement>('.form-submit');
       const btnText    = submitBtn?.querySelector<HTMLElement>('.btn-text');
       const btnLoading = submitBtn?.querySelector<HTMLElement>('.btn-loading');
 
@@ -230,7 +229,7 @@ export function initForms() {
         let json: any = {};
         try { json = await res.json(); } catch {}
 
-        (window as any).dataLayer?.push({ event: 'form_submit', form_id: formId, project, ...capitalizedFields });
+        (window as any).dataLayer?.push({ event: 'form_submit', form_id: formId, project, ...payloadFields });
 
         const redir = redirectUrl || json.redirect;
         if (redir) {
@@ -272,6 +271,19 @@ export function initForms() {
           }
         }
       }
+    };
+
+    // Click no botão de envio (type="button" — evita submit nativo capturado pelo GTM)
+    const submitBtn = form.querySelector<HTMLButtonElement>('.form-submit');
+    submitBtn?.addEventListener('click', handleSubmit);
+
+    // Enter no form (exceto em textarea e button)
+    form.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key !== 'Enter') return;
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'TEXTAREA' || target.tagName === 'BUTTON') return;
+      e.preventDefault();
+      handleSubmit();
     });
   });
 }
