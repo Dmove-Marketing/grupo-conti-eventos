@@ -1,37 +1,456 @@
 ---
+// Gerado a partir de: casamentos.html
 import Base from '../layouts/Base.astro';
-import LeadForm from '../components/forms/LeadForm.astro';
 import config from '../../config.json';
-
-// Descomente conforme necessário:
-// import Img from '../components/ui/Img.astro';
-// import Video from '../components/ui/Video.astro';
-// import StaticMap from '../components/ui/StaticMap.astro';
-// import '../styles/index.css';
+import '../styles/casamentos.css';
 ---
 
 <Base
-  title={`${config.project_name} | Título da página`}
-  description="Descrição da página para SEO."
-  ogImage="/images/og-default.jpg"
-  canonical="https://dominio.com.br/"
+  title="Grupo Conti | Três espaços exclusivos para o seu casamento"
+  description="Descubra o cenário ideal para o seu grande dia. Três espaços exclusivos em Jundiaí e Itatiba, com todos os serviços essenciais reunidos em uma única solução."
+  ogImage="/images/og-casamentos.jpg"
 >
+<!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="#topo" class="nav-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Verde.webp" alt="Grupo Conti" /></a>
+    <a href="#contato" class="nav-cta">Solicite orçamento</a>
+  </nav>
 
-  <!-- Cole o conteúdo migrado do Elementor aqui -->
-  <!-- Dica: use npm run scaffold para gerar automaticamente a partir de _html-originais/ -->
-
-  <section style="min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;text-align:center;padding:2rem;">
-    <h1>{config.project_name}</h1>
-    <p>Template pronto. Cole o HTML migrado do Elementor ou use <code>npm run scaffold</code>.</p>
-
-    <LeadForm
-      formId="lead-form"
-      project={config.project_slug}
-      submitUrl={config.forms['lead-form'].webhooks[0]}
-      redirectUrl={config.forms['lead-form'].redirect_on_success}
-      submitText="Enviar"
-      honeypot
-    />
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="topo">
+    <img class="hero-bg" src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria15_resultado.webp" alt="Casamento Grupo Conti" />
+    <div class="hero-scrim"></div>
+    <div class="hero-content">
+      <span class="hero-tags">Casamento &nbsp;•&nbsp; Jundiaí e Itatiba &nbsp;•&nbsp; São Paulo</span>
+      <h1>Três espaços exclusivos. <br />Um casamento feito <br />do seu jeito</h1>
+      <p>Descubra o cenário ideal para o seu grande dia e tenha todos os serviços essenciais reunidos em uma única solução.</p>
+      <div class="hero-ctas">
+        <a href="#contato" class="btn btn-primary">Solicite orçamento</a>
+      </div>
+    </div>
   </section>
 
+  <!-- ============ AUTORIDADE ============ -->
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-value">03</span>
+      <span class="stat-label">espaços exclusivos</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">+10</span>
+      <span class="stat-label">anos de experiência</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value">+1000</span>
+      <span class="stat-label">eventos realizados</span>
+    </div>
+  </div>
+
+  <!-- ============ ESPAÇOS ============ -->
+  <section class="section section--cream" id="espacos">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Espaços</span>
+      <h2>Um espaço diferente para <br />cada história</h2>
+    </div>
+    <div class="venues-grid">
+
+      <div class="venue-card" data-reveal>
+        <!-- carrossel de fotos — Fazenda Santa Isabel -->
+        <div class="venue-carousel">
+          <button type="button" class="venue-carousel-btn prev" aria-label="Anterior">‹</button>
+          <div class="venue-carousel-track">
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-s-isabel07_resultado.webp" alt="Fazenda Santa Isabel" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-s-isabel05_resultado.webp" alt="Fazenda Santa Isabel" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-s-isabel06_resultado.webp" alt="Fazenda Santa Isabel" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-s-isabel04_resultado.webp" alt="Fazenda Santa Isabel" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-s-isabel01_resultado.webp" alt="Fazenda Santa Isabel" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-s-isabel02_resultado.webp" alt="Fazenda Santa Isabel" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-s-isabel03_resultado.webp" alt="Fazenda Santa Isabel" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-s-isabel08_resultado.webp" alt="Fazenda Santa Isabel" loading="lazy" />
+          </div>
+          <button type="button" class="venue-carousel-btn next" aria-label="Próximo">›</button>
+        </div>
+        <div class="venue-body">
+          <span class="venue-meta">250 convidados · Itatiba</span>
+          <h3>Fazenda Santa Isabel</h3>
+          <p>Casarão histórico em uma propriedade de 5.000 m², cercado por amplos jardins com paisagismo exclusivo, gazebo para cerimônias ao ar livre e suíte dos noivos. O cenário ideal para casamentos clássicos, elegantes e cheios de personalidade.</p>
+          <a href="#contato" class="btn btn-outline">Agende uma visita</a>
+        </div>
+      </div>
+
+      <div class="venue-card" data-reveal>
+        <!-- carrossel de fotos — Estação Fazenda -->
+        <div class="venue-carousel">
+          <button type="button" class="venue-carousel-btn prev" aria-label="Anterior">‹</button>
+          <div class="venue-carousel-track">
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-_Jarinu02_resultado.webp" alt="Estação Fazenda" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-_Jarinu01_resultado.webp" alt="Estação Fazenda" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-_Jarinu06_resultado.webp" alt="Estação Fazenda" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-_Jarinu04_resultado.webp" alt="Estação Fazenda" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-_Jarinu05_resultado.webp" alt="Estação Fazenda" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-_Jarinu03_resultado.webp" alt="Estação Fazenda" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-_Jarinu08_resultado.webp" alt="Estação Fazenda" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-_Jarinu07_resultado.webp" alt="Estação Fazenda" loading="lazy" />
+          </div>
+          <button type="button" class="venue-carousel-btn next" aria-label="Próximo">›</button>
+        </div>
+        <div class="venue-body">
+          <span class="venue-meta">200 convidados · Jarinu</span>
+          <h3>Estação Fazenda</h3>
+          <p>Em uma propriedade de 5.000 m², a Estação Fazenda reúne arquitetura rústica, jardins exuberantes, capela e salão com pé-direito alto. Com infraestrutura completa para noivos e convidados, é o cenário ideal para um casamento no campo, romântico e inesquecível.</p>
+          <a href="#contato" class="btn btn-outline">Agende uma visita</a>
+        </div>
+      </div>
+
+      <div class="venue-card" data-reveal>
+        <!-- carrossel de fotos — Recanto das Palmeiras -->
+        <div class="venue-carousel">
+          <button type="button" class="venue-carousel-btn prev" aria-label="Anterior">‹</button>
+          <div class="venue-carousel-track">
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-jundiai03_resultado.webp" alt="Recanto das Palmeiras" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-jundiai02_resultado.webp" alt="Recanto das Palmeiras" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-jundiai01_resultado.webp" alt="Recanto das Palmeiras" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-jundiai07_resultado.webp" alt="Recanto das Palmeiras" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-jundiai08_resultado.webp" alt="Recanto das Palmeiras" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-jundiai09_resultado.webp" alt="Recanto das Palmeiras" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-jundiai06_resultado.webp" alt="Recanto das Palmeiras" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-jundiai05_resultado.webp" alt="Recanto das Palmeiras" loading="lazy" />
+            <img src="https://media.dmove.com.br/clients/grupo-conti/photos/carrossel-jundiai04_resultado.webp" alt="Recanto das Palmeiras" loading="lazy" />
+          </div>
+          <button type="button" class="venue-carousel-btn next" aria-label="Próximo">›</button>
+        </div>
+        <div class="venue-body">
+          <span class="venue-meta">200 convidados · Jundiaí</span>
+          <h3>Recanto das Palmeiras</h3>
+          <p>Em uma propriedade de 5.000 m², o Recanto das Palmeiras combina amplos jardins, lago ornamental com passarela e salão com pé-direito duplo. Com infraestrutura completa e um cenário naturalmente encantador, é o espaço ideal para casamentos ao ar livre, repletos de charme e sofisticação.</p>
+          <a href="#contato" class="btn btn-outline">Agende uma visita</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ EXPERIÊNCIA ============ -->
+  <section class="section section--navy" id="experiencia">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold-onavy">Experiência Conti</span>
+      <h2>Vocês vivem o momento. <br />Nós cuidamos dos detalhes</h2>
+      <p class="lede" style="margin-top:22px">Organizar um casamento envolve inúmeras decisões. No Conti, vocês encontram os principais serviços reunidos em uma única operação, com acompanhamento especializado do início ao fim.</p>
+    </div>
+    <div class="exp-grid">
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/gastronomia-propria_resultado.webp" alt="Gastronomia própria" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Gastronomia própria</h3>
+          <p>Assinado pelo Chef Evandro Luiz, o buffet próprio do Conti une qualidade, personalização e excelência para proporcionar uma experiência gastronômica à altura do seu grande dia.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/atendimento-consultivo_resultado.webp" alt="Atendimento consultivo" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Atendimento consultivo</h3>
+          <p>Nossa equipe acompanha todo o planejamento para que vocês tenham segurança, praticidade e tranquilidade durante toda a jornada.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/estrutura-integrada_resultado.webp" alt="Estrutura integrada" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Estrutura integrada</h3>
+          <p>Espaço, decoração, sonorização, iluminação, mobiliário, hospedagem e diversos serviços reunidos para facilitar a organização do casamento.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/hospedagem_resultado.webp" alt="Hospedagem e pernoite para os noivos" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Hospedagem e pernoite para os noivos</h3>
+          <p>Mais conforto e tranquilidade para aproveitar cada instante do grande dia sem a preocupação com deslocamentos.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ ESTRUTURA ============ -->
+  <section class="section section--offwhite" id="estrutura">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Estrutura</span>
+      <h2>Uma estrutura <br class="mobile-br" />completa para <br class="desktop-br" />o <br class="mobile-br" />seu grande dia</h2>
+      <p class="lede" style="margin-top:22px">Para que vocês possam concentrar o tempo no que realmente importa: celebrar.</p>
+    </div>
+    <div class="structure-grid">
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/></svg>
+        </div>
+        <span>Espaços exclusivos para cerimônia e recepção</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M3 11h18M5 11a7 7 0 0 1 14 0M12 3v2M4 21h16"/></svg>
+        </div>
+        <span>Buffet próprio</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M5 3h14l-7 8-7-8zM12 11v10M8 21h8"/></svg>
+        </div>
+        <span>Bar de drinks</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="12" cy="8" r="3"/><circle cx="6" cy="14" r="3"/><circle cx="18" cy="14" r="3"/><path d="M12 21v-6M6 21v-4M18 21v-4"/></svg>
+        </div>
+        <span>Decoração floral</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>
+        </div>
+        <span>Som e iluminação</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><ellipse cx="12" cy="10" rx="7" ry="9"/><path d="M12 19v3M8 22h8"/></svg>
+        </div>
+        <span>Espaço para o dia da noiva</span>
+      </div>
+
+      <div class="structure-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h3.5a2.5 2.5 0 0 1 0 5H9V8zM9 13v5"/></svg>
+        </div>
+        <span>Estacionamento</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ DIFERENCIAIS ============ -->
+  <section class="split">
+    <div class="split-media">
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/IMG_2109_resultado.webp" alt="Diferenciais Grupo Conti" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+    <div class="split-copy" data-reveal>
+      <span class="eyebrow eyebrow--gold">Diferenciais</span>
+      <h2>Um único contrato. <br />Muito mais praticidade <br class="mobile-br" />para vocês</h2>
+      <p>Reúna os principais serviços do seu casamento <br class="desktop-br" />em um único contrato, com mais praticidade, organização <br class="desktop-br" />e a segurança de uma equipe especializada.</p>
+    </div>
+  </section>
+
+  <!-- ============ DEPOIMENTOS ============ -->
+  <section class="testimonials" id="depoimentos">
+    <div class="center" data-reveal style="max-width:760px">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>Histórias inesquecíveis <br class="mobile-br" />começam <br class="desktop-br" />com uma <br class="mobile-br" />boa escolha</h2>
+    </div>
+    <div class="testi-controls">
+      <button class="testi-btn testi-prev" id="testiPrev" aria-label="Anterior">‹</button>
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <p>"Local lindo e aconchegante junto à natureza, com belas paisagens. Muito bem localizado, amplo e muito bem estruturado para tornar seu evento único e maravilhoso. Atendimento maravilhoso e muito atencioso. Uma ótima opção para seu evento e sua festa. Parabéns muito top"</p>
+          <span>Carlos Moreira</span>
+        </div>
+        <div class="testi-card">
+          <p>"A Fazenda Santa Isabel é ótima para eventos. Fotografei um casamento cuja cerimônia foi ao ar livre à beira do lago. Estava tudo muito cuidado e bonito em todos os detalhes. Gostei de todos os ambientes: desde a entrada da fazenda, do salão de jantar, da pista de dança, da decoração caprichada e de todo o entorno!"</p>
+          <span>Ernesto Henrique Eilers</span>
+        </div>
+        <div class="testi-card">
+          <p>"Nosso casamento foi realizado no dia 28/06/25 e estamos extremamente satisfeitos com todo serviço prestado pelo Grupo Conti. Além de todo serviço e insumos serem excelentes, os prestadores foram extremamente competentes e educados. Obrigada por tudo!"</p>
+          <span>Mariane Mari Pecini</span>
+        </div>
+        <div class="testi-card">
+          <p>"Lugar muito lindo e amplo. Estacionamento no local. Muito bem sinalizado. É possível realizar a cerimônia no local. O banheiro estava limpo. A comida é muito boa e com grande variedade. Tudo muito bem organizado. Ótimos lugares para tirar fotos. Contém um lago e ponte para as fotos"</p>
+          <span>Luis Henrique Marinho</span>
+        </div>
+        <div class="testi-card">
+          <p>"Meu casamento foi no dia 05/05, e só posso expressar gratidão! Como noiva me senti muito bem recepcionada e atendida. O espaço é encantador e a comida maravilhosa! Agradecimento especial para a Tati e para o Evandro, mas principalmente para o Edinho! Vocês arrasam! Obrigada por tornarem meu casamento ainda mais especial com todo o cuidado e carinho"</p>
+          <span>Leslie Viscaino</span>
+        </div>
+        <div class="testi-card">
+          <p>"Não tenho palavras para dizer toda a minha gratidão. Eles tornaram o nosso sonho em realidade, foi muito mais do que pensamos. Foi lindo e especial. As pessoas elogiaram o lugar, a comida, os funcionários. Todos são super gentis e atenciosos, desde a primeira visita até o pós casamento. Sério, vocês são incríveis. Confiamos de olhos fechados e não teve como dar erro, foi perfeito. Obrigada Tati e Evandro, nosso dia foi lindo e inesquecível, vocês fazem parte da nossa história ♥️"</p>
+          <span>Betania Semolini</span>
+        </div>
+      </div>
+      <button class="testi-btn testi-next" id="testiNext" aria-label="Próximo">›</button>
+    </div>
+  </section>
+
+  <!-- ============ GALERIA ============ -->
+  <section class="section section--cream" id="galeria" style="padding-bottom:48px">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Galeria</span>
+      <h2>Inspire-se para viver o seu <br class="mobile-br" />casamento <br class="desktop-br" />em um dos <br class="mobile-br" />nossos espaços</h2>
+    </div>
+  </section>
+  <div class="gallery-carousel">
+    <div class="gallery-track">
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria15_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria18_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria24_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria22_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria26_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria04_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria03_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria05_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria06_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria02_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria01_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria11_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria07_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria08_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria14_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria12_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria13_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria16_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria17_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria20_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria19_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria23_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria21_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria25_resultado.webp" alt="Casamento Grupo Conti" loading="lazy" />
+    </div>
+  </div>
+
+  <!-- ============ CONTATO ============ -->
+  <section class="contact" id="contato">
+    <div class="contact-info" data-reveal>
+      <span class="eyebrow eyebrow--gold">Próximo passo</span>
+      <h2>Vamos começar a <br class="mobile-br" />planejar o <br class="desktop-br" />casamento <br class="mobile-br" />dos seus sonhos?</h2>
+      <p>Preencha o formulário e receba um atendimento personalizado para conhecer nossos espaços, esclarecer dúvidas e solicitar um orçamento.</p>
+    </div>
+    <div class="contact-form-wrap">
+      <form
+        id="contactForm"
+        data-form-id="lead-form"
+        data-project={config.project_slug}
+        data-submit-url={config.forms['lead-form'].webhooks[0]}
+        data-redirect={config.forms['lead-form'].redirect_on_success}
+        data-grid-id="contactForm"
+        data-success-id="formConfirm"
+        novalidate
+      >
+        <div class="hp-field" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+          <label for="contactForm_website">Deixe este campo em branco</label>
+          <input type="text" id="contactForm_website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="form-grid">
+          <div class="field field--full">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome completo" required>
+          </div>
+          <div class="field">
+            <label for="telefone">Telefone</label>
+            <input id="telefone" name="telefone" type="tel" placeholder="(11) 9 0000-0000" required>
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="seu@email.com" required>
+          </div>
+          <div class="field">
+            <label for="data">Data do evento</label>
+            <input id="data" name="data" type="date">
+          </div>
+          <div class="field">
+            <label for="convidados">Nº de convidados</label>
+            <input id="convidados" name="convidados" type="number" min="1" placeholder="Nº de pessoas">
+          </div>
+          <div class="field field--full">
+            <label for="evento">Tipo de evento</label>
+            <select id="evento" name="evento" required>
+              <option value="" disabled selected>Selecione o tipo de evento</option>
+              <option value="Bodas">Bodas</option>
+              <option value="Casamento">Casamento</option>
+              <option value="Confraternização social">Confraternização social</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block form-submit" style="margin-top:22px">
+          <span class="btn-text">Solicitar Orçamento</span>
+          <span class="btn-loading" style="display:none; align-items: center; justify-content: center; gap: 8px;">
+            <svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+            </svg>
+            Enviando...
+          </span>
+        </button>
+        <p class="form-note">Seus dados são usados apenas para retorno de contato e orçamento.</p>
+        <div class="form-error" style="color: #ef4444; font-size: 0.875rem; margin-top: 4px; display: none;"></div>
+      </form>
+      <div class="form-confirm" id="formConfirm">
+        <h3>Recebemos sua solicitação!</h3>
+        <p>Em breve nossa equipe entrará em contato para dar continuidade ao planejamento do seu casamento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOCALIZAÇÃO ============ -->
+  <section class="section section--offwhite" id="localizacao">
+    <div class="center--wide" data-reveal>
+      <span class="eyebrow eyebrow--gold">Localização</span>
+      <h2>Três espaços exclusivos em Jundiaí e Itatiba para receber o <br class="desktop-br" />casamento dos seus sonhos</h2>
+    </div>
+    <div class="location-grid">
+
+      <div class="location-card" data-reveal>
+        <h3>Estação Fazenda</h3>
+        <address>Estr. Mun. Natal Lorencini - Pitangal, Jarinu - SP, 13240-000</address>
+        <div class="location-map">
+          <iframe src="https://maps.google.com/maps?q=Estr.%20Mun.%20Natal%20Lorencini%20-%20Pitangal%2C%20Jarinu%20-%20SP%2C%2013240-000&t=m&z=15&output=embed&iwloc=near" title="Estação Fazenda — Localização" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="location-card" data-reveal>
+        <h3>Recanto das Palmeiras</h3>
+        <address>Rua Miguel Munhoz 100 Caxambu - Jardim Molinari, Jundiaí - SP, 13218-651</address>
+        <div class="location-map">
+          <iframe src="https://maps.google.com/maps?q=Rua%20Miguel%20Munhoz%20100%20Caxambu%20-%20Jardim%20Molinari%2C%20Jundia%C3%AD%20-%20SP%2C%2013218-651&t=m&z=15&output=embed&iwloc=near" title="Recanto das Palmeiras — Localização" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <div class="location-card" data-reveal>
+        <h3>Fazenda Santa Isabel</h3>
+        <address>Rod. Romildo Prado, 100 - Km 13 - Itapema, Itatiba - SP, 13255-750</address>
+        <div class="location-map">
+          <iframe src="https://maps.google.com/maps?q=Rod.%20Romildo%20Prado%2C%20100%20-%20Km%2013%20-%20Itapema%2C%20Itatiba%20-%20SP%2C%2013255-750&t=m&z=15&output=embed&iwloc=near" title="Fazenda Santa Isabel — Localização" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <a href="#topo" class="footer-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Claro.webp" alt="Grupo Conti" /></a>
+    <p class="footer-copy">© 2026 Grupo Conti — Todos os direitos reservados.</p>
+    <div class="footer-dev">
+      <span>Desenvolvido por:</span>
+      <a href="http://dmove.com.br" target="_blank" rel="noopener noreferrer">
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logotipo-dmove.webp" alt="DMove" style="height: 18px; width: auto; display: inline-block; vertical-align: middle;" />
+      </a>
+    </div>
+  </footer>
+
 </Base>
+<script>
+  import { initForms } from '../scripts/forms.ts';
+  import '../scripts/casamentos.js';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initForms);
+  } else {
+    initForms();
+  }
+</script>
