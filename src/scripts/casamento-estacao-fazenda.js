@@ -52,6 +52,30 @@
       }
     }
 
+    function galleryPrev() {
+      if (galleryIndex > 0) {
+        galleryIndex--;
+      } else {
+        galleryIndex = gallerySlides.length - 1;
+      }
+      updateGallery();
+    }
+
+    function galleryNext() {
+      if (galleryIndex < gallerySlides.length - 1) {
+        galleryIndex++;
+      } else {
+        galleryIndex = 0;
+      }
+      updateGallery();
+    }
+
+    // Setas de navegação (mobile)
+    var galleryPrevBtn = document.getElementById('galleryPrev');
+    var galleryNextBtn = document.getElementById('galleryNext');
+    if (galleryPrevBtn) galleryPrevBtn.addEventListener('click', galleryPrev);
+    if (galleryNextBtn) galleryNextBtn.addEventListener('click', galleryNext);
+
     // Touch support for mobile swipe
     var gStartX = 0;
     var gIsSwiping = false;
@@ -67,21 +91,10 @@
       var diffX = e.changedTouches[0].clientX - gStartX;
       if (Math.abs(diffX) > 40) { // threshold of 40px
         if (diffX > 0) {
-          // Swipe right -> show previous
-          if (galleryIndex > 0) {
-            galleryIndex--;
-          } else {
-            galleryIndex = gallerySlides.length - 1;
-          }
+          galleryPrev(); // Swipe right -> show previous
         } else {
-          // Swipe left -> show next
-          if (galleryIndex < gallerySlides.length - 1) {
-            galleryIndex++;
-          } else {
-            galleryIndex = 0;
-          }
+          galleryNext(); // Swipe left -> show next
         }
-        updateGallery();
       }
       gIsSwiping = false;
     });

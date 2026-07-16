@@ -53,6 +53,15 @@
       }
     }
 
+    function prevSlide() {
+      if (galleryIndex > 0) {
+        galleryIndex--;
+      } else {
+        galleryIndex = gallerySlides.length - 1;
+      }
+      updateGallery();
+    }
+
     function nextSlide() {
       if (galleryIndex < gallerySlides.length - 1) {
         galleryIndex++;
@@ -60,6 +69,24 @@
         galleryIndex = 0;
       }
       updateGallery();
+    }
+
+    // Setas de navegação (mobile)
+    var galleryPrevBtn = document.getElementById('galleryPrev');
+    var galleryNextBtn = document.getElementById('galleryNext');
+    if (galleryPrevBtn) {
+      galleryPrevBtn.addEventListener('click', function(){
+        stopAutoPlay();
+        prevSlide();
+        startAutoPlay();
+      });
+    }
+    if (galleryNextBtn) {
+      galleryNextBtn.addEventListener('click', function(){
+        stopAutoPlay();
+        nextSlide();
+        startAutoPlay();
+      });
     }
 
     function startAutoPlay() {
@@ -92,21 +119,10 @@
       var diffX = e.changedTouches[0].clientX - gStartX;
       if (Math.abs(diffX) > 40) { // threshold of 40px
         if (diffX > 0) {
-          // Swipe right -> show previous
-          if (galleryIndex > 0) {
-            galleryIndex--;
-          } else {
-            galleryIndex = gallerySlides.length - 1;
-          }
+          prevSlide(); // Swipe right -> show previous
         } else {
-          // Swipe left -> show next
-          if (galleryIndex < gallerySlides.length - 1) {
-            galleryIndex++;
-          } else {
-            galleryIndex = 0;
-          }
+          nextSlide(); // Swipe left -> show next
         }
-        updateGallery();
       }
       gIsSwiping = false;
       startAutoPlay(); // Retoma o autoplay depois do toque
