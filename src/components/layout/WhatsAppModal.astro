@@ -408,9 +408,21 @@ step1Fields.forEach(f => {
       ];
       const qs = new URLSearchParams();
       trackingKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
-      const fonte = qs.toString()
-        ? `WhatsApp ${window.location.pathname}?${qs.toString()}`
-        : `WhatsApp ${window.location.pathname}`;
+
+      // Determina a fonte base de acordo com o padrão do cliente
+      let fonteBase = 'Landing page/casamentos';
+      const path = window.location.pathname.replace(/^\/|\/$/g, '');
+      if (path.includes('eventos-corporativos')) {
+        fonteBase = 'Landing page/eventos-corporativos';
+      } else if (path.includes('debutantes')) {
+        fonteBase = 'Landing page/debutantes';
+      } else if (path.includes('aniversarios') || path.includes('aniversario')) {
+        fonteBase = 'Landing page/aniversarios';
+      } else if (path.includes('bio')) {
+        fonteBase = 'Landing page/bio';
+      }
+
+      const fonte = qs.toString() ? `${fonteBase}?${qs.toString()}` : fonteBase;
 
       const pageForm = document.querySelector('form[data-form-id]');
       const formIdVal = pageForm ? (pageForm.id || pageForm.dataset.formId || 'form_whatsapp') : 'form_whatsapp';
@@ -787,6 +799,26 @@ step1Fields.forEach(f => {
   }
 
   .wa-input::placeholder { color: rgba(255,255,255,0.25); }
+
+  /* Ajuste de estilização para o input do Flatpickr no modal */
+  .wa-form-group :global(.flatpickr-input-alt) {
+    width: 100% !important;
+    padding: 10px 13px !important;
+    background: #2a3942 !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 8px !important;
+    color: #e9edef !important;
+    font-size: 0.88rem !important;
+    font-family: inherit !important;
+    outline: none !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+    box-sizing: border-box !important;
+  }
+
+  .wa-form-group :global(.flatpickr-input-alt:focus) {
+    border-color: #25d366 !important;
+    box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.15) !important;
+  }
 
   .wa-select {
     appearance: none;

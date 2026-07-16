@@ -1,15 +1,6 @@
 /* Scripts da página Eventos Corporativos (duplicado de casamentos.js — não compartilhar entre as páginas) */
 
 (function(){
-  // ---- nav: padding + fundo ao rolar ----
-  var nav = document.getElementById('nav');
-  function onScroll(){
-    if(window.scrollY > 30){ nav.classList.add('is-scrolled'); }
-    else { nav.classList.remove('is-scrolled'); }
-  }
-  window.addEventListener('scroll', onScroll, { passive:true });
-  onScroll();
-
   // ---- reveal on scroll ----
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){

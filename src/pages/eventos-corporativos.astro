@@ -6,20 +6,40 @@ import '../styles/eventos-corporativos.css';
 
 const whatsAppStep1Fields = [
   {
-    name: 'tipo_evento',
+    name: 'empresa',
+    type: 'text' as const,
+    label: 'Empresa',
+    placeholder: 'Nome da sua empresa',
+    required: true,
+  },
+  {
+    name: 'data',
+    type: 'date' as const,
+    label: 'Data do evento',
+    required: true,
+  },
+  {
+    name: 'convidados',
+    type: 'number' as const,
+    label: 'Nº de convidados',
+    placeholder: 'Nº de pessoas',
+    required: true,
+  },
+  {
+    name: 'evento',
     type: 'select' as const,
+    label: 'Tipo de evento',
     required: true,
     options: [
       { value: '', label: 'Selecione o tipo de evento', disabled: true, selected: true },
-      { value: 'Convenção', label: 'Convenção' },
-      { value: 'Treinamento', label: 'Treinamento' },
-      { value: 'Confraternização', label: 'Confraternização' },
-      { value: 'Lançamento de produto', label: 'Lançamento de produto' },
-      { value: 'Workshop', label: 'Workshop' },
-      { value: 'Evento de relacionamento', label: 'Evento de relacionamento' },
-      { value: 'Premiação', label: 'Premiação' },
-      { value: 'Encontro comercial', label: 'Encontro comercial' },
-      { value: 'Festa de final de ano', label: 'Festa de final de ano' },
+      { value: 'Confraternização corporativo', label: 'Confraternização corporativo' },
+      { value: 'Corporativo', label: 'Corporativo' },
+      { value: 'Feiras e Exposições', label: 'Feiras e Exposições' },
+      { value: 'Masterclass e Palestras', label: 'Masterclass e Palestras' },
+      { value: 'Mentorias e Treinamentos', label: 'Mentorias e Treinamentos' },
+      { value: 'Offsite corporativo', label: 'Offsite corporativo' },
+      { value: 'Reuniões de Networking', label: 'Reuniões de Networking' },
+      { value: 'Workshops, Conferências e Seminários', label: 'Workshops, Conferências e Seminários' },
       { value: 'Outros', label: 'Outros' },
     ],
   },
@@ -35,7 +55,7 @@ const whatsAppStep1Fields = [
 >
 <!-- ============ NAV ============ -->
   <nav class="nav" id="nav">
-    <a href="#topo" class="nav-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Verde.webp" alt="Grupo Conti" /></a>
+    <a href="#topo" class="nav-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Claro.webp" alt="Grupo Conti" /></a>
     <a href="#contato" class="nav-cta">Solicite orçamento</a>
   </nav>
 
@@ -74,6 +94,7 @@ const whatsAppStep1Fields = [
     <div class="center" data-reveal>
       <span class="eyebrow eyebrow--gold">Para quem organiza eventos</span>
       <h2>Perfeito para empresas,<br class="mobile-br" /> agências<br class="desktop-br" /> e organizadores<br class="mobile-br" /> de eventos</h2>
+      <p class="lede" style="margin-top:22px">Três espaços preparados para atender diferentes perfis de eventos corporativos, com infraestrutura e suporte operacional do início ao fim.</p>
     </div>
     <div class="icons-grid">
 
@@ -86,14 +107,23 @@ const whatsAppStep1Fields = [
 
       <div class="icon-item" data-reveal>
         <div class="structure-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-5.5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M2 3h20" />
+            <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" />
+            <path d="m7 21 5-5 5 5" />
+          </svg>
         </div>
         <span>Treinamentos</span>
       </div>
 
       <div class="icon-item" data-reveal>
         <div class="structure-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M7 2 5 9a3 3 0 1 0 4 0L7 2ZM17 2l-2 7a3 3 0 1 0 4 0l-2-7Z"/><path d="M7 12v9M17 12v9M4 21h6M14 21h6"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M8 22h8" />
+            <path d="M7 10h10" />
+            <path d="M12 15v7" />
+            <path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z" />
+          </svg>
         </div>
         <span>Confraternizações</span>
       </div>
@@ -107,14 +137,22 @@ const whatsAppStep1Fields = [
 
       <div class="icon-item" data-reveal>
         <div class="structure-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2-2 2.5-2.5Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M21 9a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 15 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z" />
+            <path d="M15 3v5a1 1 0 0 0 1 1h5" />
+          </svg>
         </div>
         <span>Workshops</span>
       </div>
 
       <div class="icon-item" data-reveal>
         <div class="structure-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="8" cy="12" r="4"/><circle cx="16" cy="12" r="4"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
         </div>
         <span>Eventos de relacionamento</span>
       </div>
@@ -239,21 +277,44 @@ const whatsAppStep1Fields = [
 
       <div class="structure-item" data-reveal>
         <div class="structure-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M14 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0Z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="m10 20-1.25-2.5L6 18" />
+            <path d="M10 4 8.75 6.5 6 6" />
+            <path d="m14 20 1.25-2.5L18 18" />
+            <path d="m14 4 1.25 2.5L18 6" />
+            <path d="m17 21-3-6h-4" />
+            <path d="m17 3-3 6 1.5 3" />
+            <path d="M2 12h6.5L10 9" />
+            <path d="m20 10-1.5 2 1.5 2" />
+            <path d="M22 12h-6.5L14 15" />
+            <path d="m4 10 1.5 2L4 14" />
+            <path d="m7 21 3-6-1.5-3" />
+            <path d="m7 3 3 6h4" />
+          </svg>
         </div>
         <span>Ambientes climatizados</span>
       </div>
 
       <div class="structure-item" data-reveal>
         <div class="structure-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M6 3v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3M8 13v8M16 13v8M4 21h4M16 21h4"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3" />
+            <path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+            <path d="M4 18v2" />
+            <path d="M20 18v2" />
+            <path d="M12 9v9" />
+          </svg>
         </div>
         <span>Mobiliário</span>
       </div>
 
       <div class="structure-item" data-reveal>
         <div class="structure-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M3 11h18M5 11a7 7 0 0 1 14 0M12 3v2M4 21h16"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+            <path d="M7 2v20" />
+            <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+          </svg>
         </div>
         <span>Buffet próprio</span>
       </div>
@@ -517,7 +578,7 @@ const whatsAppStep1Fields = [
 
       <div class="location-card" data-reveal>
         <h3>Estação Fazenda</h3>
-        <address>Estr. Mun. Natal Lorencini - Pitangal, Jarinu - SP, 13240-000</address>
+        <address>Estr. Mun. Natal Lorencini - Pitangal, Jarinu <br class="desktop-br" />- SP, 13240-000</address>
         <div class="location-map">
           <iframe src="https://maps.google.com/maps?q=Estr.%20Mun.%20Natal%20Lorencini%20-%20Pitangal%2C%20Jarinu%20-%20SP%2C%2013240-000&t=m&z=15&output=embed&iwloc=near" title="Estação Fazenda — Localização" loading="lazy"></iframe>
         </div>
@@ -525,7 +586,7 @@ const whatsAppStep1Fields = [
 
       <div class="location-card" data-reveal>
         <h3>Recanto das Palmeiras</h3>
-        <address>Rua Miguel Munhoz 100 Caxambu - Jardim Molinari, Jundiaí - SP, 13218-651</address>
+        <address>Rua Miguel Munhoz 100 Caxambu - Jardim Molinari, Jundiaí <br class="desktop-br" />- SP, 13218-651</address>
         <div class="location-map">
           <iframe src="https://maps.google.com/maps?q=Rua%20Miguel%20Munhoz%20100%20Caxambu%20-%20Jardim%20Molinari%2C%20Jundia%C3%AD%20-%20SP%2C%2013218-651&t=m&z=15&output=embed&iwloc=near" title="Recanto das Palmeiras — Localização" loading="lazy"></iframe>
         </div>
@@ -533,7 +594,7 @@ const whatsAppStep1Fields = [
 
       <div class="location-card" data-reveal>
         <h3>Fazenda Santa Isabel</h3>
-        <address>Rod. Romildo Prado, 100 - Km 13 - Itapema, Itatiba - SP, 13255-750</address>
+        <address>Rod. Romildo Prado, 100 - Km 13 - Itapema, Itatiba <br class="desktop-br" />- SP, 13255-750</address>
         <div class="location-map">
           <iframe src="https://maps.google.com/maps?q=Rod.%20Romildo%20Prado%2C%20100%20-%20Km%2013%20-%20Itapema%2C%20Itatiba%20-%20SP%2C%2013255-750&t=m&z=15&output=embed&iwloc=near" title="Fazenda Santa Isabel — Localização" loading="lazy"></iframe>
         </div>

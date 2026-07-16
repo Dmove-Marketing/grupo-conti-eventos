@@ -113,20 +113,17 @@
   [data-reveal].is-visible{opacity:1;transform:none}
 
   /* ============ nav ============ */
-  .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:flex-end;align-items:center;padding:32px 60px;background:transparent;transition:padding .4s}
-  .nav.is-scrolled{padding:20px 60px}
-  .nav-logo{position:absolute;top:32px;left:50%;transform:translateX(-50%);text-decoration:none;transition:top .4s}
-  .nav.is-scrolled .nav-logo{top:20px}
-  .nav-logo img{height:96px;width:auto;display:block;transition:height .4s}
-  .nav.is-scrolled .nav-logo img{height:80px}
+  .nav{position:absolute;top:0;left:0;right:0;z-index:100;display:flex;justify-content:flex-end;align-items:center;padding:32px 60px;background:transparent}
+  .nav-logo{position:absolute;top:32px;left:50%;transform:translateX(-50%);text-decoration:none}
+  .nav-logo img{height:96px;width:auto;display:block}
   .nav-cta{background:var(--gold);border:1px solid var(--gold);color:var(--white);padding:11px 24px;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;font-weight:600;transition:background .3s}
   .nav-cta:hover{background:var(--gold-deep)}
 
   /* ============ hero ============ */
   .hero{height:100vh;min-height:640px;position:relative;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
-  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover !important;object-position:center bottom !important;opacity:.9;transform:scale(1.04);animation:12s ease-out 0s 1 forwards heroZoom}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover !important;object-position:center bottom !important;opacity:.8;transform:scale(1.04);animation:12s ease-out 0s 1 forwards heroZoom}
   .hero-bg-label{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);font:12px/1 ui-monospace,monospace;letter-spacing:1px;color:rgba(var(--cream-rgb),.28);text-align:center;text-transform:uppercase}
-  .hero-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,20,36,.88) 0%,rgba(15,20,36,.32) 55%,rgba(15,20,36,.08) 100%)}
+  .hero-scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,20,36,.92) 0%,rgba(15,20,36,.4) 55%,rgba(15,20,36,.16) 100%)}
   .hero-content{position:relative;z-index:2;padding:0 60px 88px;max-width:900px}
   .hero-content h1{font-size:clamp(34px,min(5.6vw,6vh),66px);color:var(--cream);margin-bottom:26px}
   .hero-content p{font-size:16px;color:rgba(var(--cream-rgb),.75);max-width:540px;margin-bottom:20px;line-height:1.7}
@@ -154,7 +151,7 @@
   .about-copy h2{margin-bottom:22px}
   .about-copy p{font-size:16px;color:rgba(var(--navy-rgb),.7);font-weight:300;line-height:1.7}
   .about-media{position:relative;min-height:460px}
-  .about-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .about-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;display:block}
 
   /* ============ hospedagem ============ */
   .hosting{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
@@ -274,11 +271,8 @@
   /* ============ responsivo — celular (até 768px) ============ */
   @media(max-width:768px){
     .nav{padding:20px 24px}
-    .nav.is-scrolled{padding:12px 24px}
     .nav-logo{top:24px}
-    .nav.is-scrolled .nav-logo{top:14px}
     .nav-logo img{height:72px}
-    .nav.is-scrolled .nav-logo img{height:60px}
     .nav-cta{display:none}
     h2{font-size:26px}
     .hero-content{padding:0 24px 56px}

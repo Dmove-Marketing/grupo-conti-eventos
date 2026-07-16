@@ -3,16 +3,47 @@
 import Base from '../layouts/Base.astro';
 import config from '../../config.json';
 import '../styles/casamento-estacao-fazenda.css';
+
+const whatsAppStep1Fields = [
+  {
+    name: 'data',
+    type: 'date' as const,
+    label: 'Data do evento',
+    required: true,
+  },
+  {
+    name: 'convidados',
+    type: 'number' as const,
+    label: 'Nº de convidados',
+    placeholder: 'Nº de pessoas',
+    required: true,
+  },
+  {
+    name: 'evento',
+    type: 'select' as const,
+    label: 'Tipo de evento',
+    required: true,
+    options: [
+      { value: '', label: 'Selecione o tipo de evento', disabled: true, selected: true },
+      { value: 'Bodas', label: 'Bodas' },
+      { value: 'Casamento', label: 'Casamento' },
+      { value: 'Confraternização social', label: 'Confraternização social' },
+      { value: 'Outros', label: 'Outros' },
+    ],
+  },
+];
 ---
 
 <Base
   title="Grupo Conti | Três espaços exclusivos para o seu casamento"
   description="Descubra o cenário ideal para o seu grande dia. Três espaços exclusivos em Jundiaí e Itatiba, com todos os serviços essenciais reunidos em uma única solução."
   ogImage="/images/og-casamentos.jpg"
+  whatsAppStep1Fields={whatsAppStep1Fields}
+  whatsAppMessage={"Olá! Vamos planejar o seu casamento na Estação Fazenda?\nConte um pouco sobre o que você precisa e nossa equipe te ajuda com o orçamento."}
 >
 <!-- ============ NAV ============ -->
   <nav class="nav" id="nav">
-    <a href="#topo" class="nav-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Verde.webp" alt="Grupo Conti" /></a>
+    <a href="#topo" class="nav-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Claro.webp" alt="Grupo Conti" /></a>
     <a href="#contato" class="nav-cta">Solicite orçamento</a>
   </nav>
 
@@ -62,7 +93,7 @@ Da cerimônia em meio à natureza à praticidade da hospedagem parceira, localiz
       <a href="#contato" class="btn btn-outline" style="margin-top:26px;align-self:flex-start">Agende uma visita</a>
     </div>
     <div class="about-media">
-      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/sobre-est-fazenda.webp" alt="Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/sobre-est-fazenda.webp" alt="Estação Fazenda" loading="lazy" style="object-position: center bottom !important;" />
     </div>
   </section>
 
@@ -153,7 +184,10 @@ Da cerimônia em meio à natureza à praticidade da hospedagem parceira, localiz
 
       <div class="structure-item" data-reveal>
         <div class="structure-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><ellipse cx="12" cy="10" rx="7" ry="9"/><path d="M12 19v3M8 22h8"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z" />
+            <path d="M5 21h14" />
+          </svg>
         </div>
         <span>Sala da noiva</span>
       </div>

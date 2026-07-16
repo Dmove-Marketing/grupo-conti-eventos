@@ -180,8 +180,24 @@ export function initForms() {
       }
       payloadFields['Data do evento'] = dataFormatada;
 
-      // Outros campos genéricos capitalizados
-      let fonteBase = rawData['fonte'] || project;
+      // Determina a fonte base de acordo com o padrão do cliente
+      let fonteBase = rawData['fonte'];
+      if (!fonteBase) {
+        const path = window.location.pathname.replace(/^\/|\/$/g, '');
+        if (path.includes('eventos-corporativos')) {
+          fonteBase = 'Landing page/eventos-corporativos';
+        } else if (path.includes('debutantes')) {
+          fonteBase = 'Landing page/debutantes';
+        } else if (path.includes('aniversarios') || path.includes('aniversario')) {
+          fonteBase = 'Landing page/aniversarios';
+        } else if (path.includes('bio')) {
+          fonteBase = 'Landing page/bio';
+        } else {
+          // Fallback para casamentos (engloba / e casamento-estacao-fazenda)
+          fonteBase = 'Landing page/casamentos';
+        }
+      }
+
       Object.entries(rawData).forEach(([key, val]) => {
         if (['nome', 'telefone', 'email', 'evento', 'data', 'fonte'].includes(key)) return;
         const capKey = key.charAt(0).toUpperCase() + key.slice(1);
