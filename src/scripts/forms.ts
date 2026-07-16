@@ -47,6 +47,10 @@ export function initForms() {
       const hp = form.querySelector<HTMLInputElement>('[name="website"]');
       if (hp && hp.value) return;
 
+      const msgEl = gridId
+        ? document.getElementById(gridId)?.querySelector('[id$="FormMsg"]') as HTMLElement | null
+        : form.querySelector('.form-error') as HTMLElement | null;
+
       // Validação de campos obrigatórios
       let firstInvalid: HTMLElement | null = null;
       let isValid = true;
@@ -109,6 +113,10 @@ export function initForms() {
       });
 
       if (!isValid) {
+        if (msgEl) {
+          msgEl.innerHTML = 'Preencha corretamente todos os campos obrigatórios destacados para continuar.';
+          msgEl.style.display = 'block';
+        }
         firstInvalid!.scrollIntoView({ behavior: 'smooth', block: 'center' });
         (firstInvalid as HTMLElement).focus();
         return;
@@ -117,10 +125,6 @@ export function initForms() {
       const submitBtn  = form.querySelector<HTMLButtonElement>('.form-submit');
       const btnText    = submitBtn?.querySelector<HTMLElement>('.btn-text');
       const btnLoading = submitBtn?.querySelector<HTMLElement>('.btn-loading');
-
-      const msgEl = gridId
-        ? document.getElementById(gridId)?.querySelector('[id$="FormMsg"]') as HTMLElement | null
-        : form.querySelector('.form-error') as HTMLElement | null;
 
       if (submitBtn) submitBtn.disabled = true;
 
