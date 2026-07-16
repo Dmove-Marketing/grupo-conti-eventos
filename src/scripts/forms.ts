@@ -180,22 +180,12 @@ export function initForms() {
       }
       payloadFields['Data do evento'] = dataFormatada;
 
-      // Determina a fonte base de acordo com o padrão do cliente
+      // Determina a fonte base de acordo com o padrão do cliente (Landing page/nome-da-pagina)
       let fonteBase = rawData['fonte'];
       if (!fonteBase) {
         const path = window.location.pathname.replace(/^\/|\/$/g, '');
-        if (path.includes('eventos-corporativos')) {
-          fonteBase = 'Landing page/eventos-corporativos';
-        } else if (path.includes('debutantes')) {
-          fonteBase = 'Landing page/debutantes';
-        } else if (path.includes('aniversarios') || path.includes('aniversario')) {
-          fonteBase = 'Landing page/aniversarios';
-        } else if (path.includes('bio')) {
-          fonteBase = 'Landing page/bio';
-        } else {
-          // Fallback para casamentos (engloba / e casamento-estacao-fazenda)
-          fonteBase = 'Landing page/casamentos';
-        }
+        const pageName = (path === '' || path === 'index.html') ? 'casamentos' : path.replace(/\.html$/, '');
+        fonteBase = `Landing page/${pageName}`;
       }
 
       Object.entries(rawData).forEach(([key, val]) => {

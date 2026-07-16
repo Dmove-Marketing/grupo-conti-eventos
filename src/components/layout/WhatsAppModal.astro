@@ -409,18 +409,10 @@ step1Fields.forEach(f => {
       const qs = new URLSearchParams();
       trackingKeys.forEach(k => { if (tracking[k]) qs.set(k, tracking[k]); });
 
-      // Determina a fonte base de acordo com o padrão do cliente
-      let fonteBase = 'Landing page/casamentos';
+      // Determina a fonte base de acordo com o padrão do cliente (Landing page/nome-da-pagina)
       const path = window.location.pathname.replace(/^\/|\/$/g, '');
-      if (path.includes('eventos-corporativos')) {
-        fonteBase = 'Landing page/eventos-corporativos';
-      } else if (path.includes('debutantes')) {
-        fonteBase = 'Landing page/debutantes';
-      } else if (path.includes('aniversarios') || path.includes('aniversario')) {
-        fonteBase = 'Landing page/aniversarios';
-      } else if (path.includes('bio')) {
-        fonteBase = 'Landing page/bio';
-      }
+      const pageName = (path === '' || path === 'index.html') ? 'casamentos' : path.replace(/\.html$/, '');
+      const fonteBase = `Landing page/${pageName}`;
 
       const fonte = qs.toString() ? `${fonteBase}?${qs.toString()}` : fonteBase;
 
