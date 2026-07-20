@@ -278,11 +278,16 @@
   /* ============ hero dividida (formulário) — split de duas colunas exclusivo desktop (>=1024px) ============ */
   @media(min-width:1024px){
     .hero{height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:end;column-gap:20px}
-    .hero-content{max-width:none;padding:0 60px 200px}
-    .hero-form{align-self:center;padding:24px 60px 24px 0;width:100%}
-    .hero-form-card{max-width:640px;padding:40px 38px}
-    .hero-form-card h2{font-size:23px;margin-bottom:22px}
-    .hero-form-card .form-grid{grid-template-columns:1fr 1fr;gap:14px}
+    .hero-content{max-width:none;padding:0 60px 200px 120px}
+    .hero-form{align-self:center;padding:24px 60px 24px 0;width:100%;justify-content:flex-start}
+    .hero-form-card{max-width:750px;padding:30px 35px}
+    .hero-form-card h2{font-size:21px;margin-bottom:14px}
+    .hero-form-card .form-grid{grid-template-columns:repeat(2, 1fr);gap:12px}
+    .hero-form-card .form-grid > .field{grid-column:span 1} /* Todos os campos ocupam 50% */
+    .hero-form-card .form-grid > :nth-child(1){grid-column:span 2} /* Exceção: Campo Nome ocupa 100% */
+    .hero-form-card .field input,
+    .hero-form-card .field select{padding:10px 12px;font-size:13px}
+    .hero-form-card .form-submit{margin-top:14px !important}
     .hero-form-card .form-confirm{padding:20px 0}
   }
 
