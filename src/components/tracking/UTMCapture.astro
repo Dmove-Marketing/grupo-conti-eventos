@@ -46,5 +46,53 @@
       page_path: window.location.pathname,
       ...trackingData
     });
+
+    // Injeção automática dos campos ocultos de UTM e Rastreamento em todos os formulários da página
+    function injectUTMToForms() {
+      const forms = document.querySelectorAll("form");
+      if (!forms.length) return;
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const savedTrackingRaw = sessionStorage.getItem('dmove_tracking');
+      const savedTracking: Record<string, string> = savedTrackingRaw ? JSON.parse(savedTrackingRaw) : {};
+
+      const fullUrl = window.location.href;
+      const pathName = window.location.pathname;
+      const searchParams = window.location.search;
+
+      const getParam = (key: string) => urlParams.get(key) || savedTracking[key] || '';
+
+      const dataToInject: Record<string, string> = {
+        "utm_source": getParam('utm_source'),
+        "utm_medium": getParam('utm_medium'),
+        "utm_campaign": getParam('utm_campaign'),
+        "utm_content": getParam('utm_content'),
+        "utm_term": getParam('utm_term'),
+        "fbclid": getParam('fbclid'),
+        "landing_page": pathName,
+        "landing_url": fullUrl,
+        "URL da página": fullUrl,
+        "Fonte": `Landing page${pathName}${searchParams}`
+      };
+
+      forms.forEach(form => {
+        Object.keys(dataToInject).forEach(key => {
+          let input = form.querySelector(`input[name="${key}"]`) as HTMLInputElement | null;
+          if (!input) {
+            input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            form.appendChild(input);
+          }
+          input.value = dataToInject[key];
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', injectUTMToForms);
+    } else {
+      injectUTMToForms();
+    }
   })();
 </script>
