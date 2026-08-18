@@ -25,6 +25,29 @@ interface Step1Field {
   min?: string;
   max?: string;
   rows?: number;
+  /**
+   * Exibe e exige este campo apenas quando outro campo do formulário tiver um dos valores indicados.
+   * Fica oculto (display:none) e não-required até a condição bater.
+   */
+  showWhen?: {
+    field: string;
+    equalsAny: string[];
+  };
+}
+
+interface FieldCondition {
+  field: string;
+  /** valor do campo deve ser um destes para a condição bater */
+  equalsAny?: string[];
+  /** valor do campo NÃO deve ser nenhum destes (inclua '' na lista pra também exigir "preenchido") */
+  notEqualsAny?: string[];
+}
+
+interface MessageVariant {
+  /** Condições combinadas com AND. Se omitido, é a variante padrão (fallback) — deve ser a última do array. */
+  when?: FieldCondition[];
+  /** Texto com placeholders {chave}, resolvidos via messageFieldMap ou pelo nome do campo diretamente */
+  template: string;
 }
 
 interface Props {
@@ -45,6 +68,10 @@ interface Props {
     field: string;
     map: Record<string, string>;
   };
+  /** Variantes de template da mensagem do WhatsApp, avaliadas em ordem — primeira que bater vence. Sem `when` = fallback. Se omitido/vazio, usa a lista genérica de campos (comportamento padrão). */
+  messageVariants?: MessageVariant[];
+  /** Mapeia placeholder do template → nome real do campo (ex.: { tipo_evento: 'Tipo de evento' }). Placeholder sem entrada usa o próprio nome como campo (ex.: {nome} → campo 'nome'). */
+  messageFieldMap?: Record<string, string>;
 }
 
 const {
@@ -65,6 +92,8 @@ const {
   welcomeMessage = 'Olá! Como posso te ajudar?\nPreencha os campos abaixo e vamos conversar pelo WhatsApp.',
   phone,
   phoneRouting,
+  messageVariants = [],
+  messageFieldMap = {},
 } = Astro.props;
 
 const waPhone       = phone || config.whatsapp?.phone || '5511999999999';
@@ -151,11 +180,17 @@ step1Fields.forEach(f => {
           <!-- ETAPA 1: campos configuráveis via step1Fields -->
           <div id="wa-step-1" class="wa-step active">
             {step1Fields.map((f) => (
-              <div class="wa-form-group">
+              <div
+                class="wa-form-group"
+                {...(f.showWhen ? {
+                  'data-show-when-field': f.showWhen.field,
+                  'data-show-when-values': JSON.stringify(f.showWhen.equalsAny),
+                } : {})}
+              >
                 {f.label && <label class="wa-label" for={`wa-${f.name}`}>{f.label}</label>}
 
                 {f.type === 'select' && (
-                  <select name={f.name} id={`wa-${f.name}`} required={f.required} class="wa-input wa-select">
+                  <select name={f.name} id={`wa-${f.name}`} required={f.required} data-required-default={f.required ? 'true' : 'false'} class="wa-input wa-select">
                     {f.options?.map((opt) => (
                       <option value={opt.value} disabled={opt.disabled} selected={opt.selected}>{opt.label}</option>
                     ))}
@@ -163,14 +198,14 @@ step1Fields.forEach(f => {
                 )}
 
                 {f.type === 'textarea' && (
-                  <textarea name={f.name} id={`wa-${f.name}`} placeholder={f.placeholder} required={f.required} rows={f.rows ?? 3} class="wa-input wa-textarea" />
+                  <textarea name={f.name} id={`wa-${f.name}`} placeholder={f.placeholder} required={f.required} data-required-default={f.required ? 'true' : 'false'} rows={f.rows ?? 3} class="wa-input wa-textarea" />
                 )}
 
                 {f.type === 'radio' && (
                   <div class="wa-radio-group" role="group">
                     {f.options?.map((opt) => (
                       <label class="wa-radio-label">
-                        <input type="radio" name={f.name} value={opt.value} required={f.required} />
+                        <input type="radio" name={f.name} value={opt.value} required={f.required} data-required-default={f.required ? 'true' : 'false'} />
                         <span>{opt.label}</span>
                       </label>
                     ))}
@@ -184,6 +219,7 @@ step1Fields.forEach(f => {
                     id={`wa-${f.name}`}
                     placeholder={f.placeholder}
                     required={f.required}
+                    data-required-default={f.required ? 'true' : 'false'}
                     min={f.min}
                     max={f.max}
                     value={f.value}
@@ -250,7 +286,32 @@ step1Fields.forEach(f => {
 </div>
 )}
 
-<script is:inline define:vars={{ webhookUrl, projectSlug, waPhone, fieldLabels, routingField, routingMap }}>
+<script is:inline define:vars={{ webhookUrl, projectSlug, waPhone, fieldLabels, routingField, routingMap, messageVariants, messageFieldMap }}>
+  // ─── Motor de template de mensagem ─────────────────────────────────
+  function waConditionMatches(cond, values) {
+    const val = values[cond.field] ?? '';
+    if (cond.equalsAny) return cond.equalsAny.includes(val);
+    if (cond.notEqualsAny) return !cond.notEqualsAny.includes(val);
+    return true;
+  }
+
+  function waSelectVariant(variants, values) {
+    for (const variant of variants) {
+      if (!variant.when || variant.when.every((c) => waConditionMatches(c, values))) {
+        return variant;
+      }
+    }
+    return null;
+  }
+
+  function waFillTemplate(template, values, fieldMap) {
+    return template.replace(/\{(\w+)\}/g, (_match, key) => {
+      const sourceField = (fieldMap && fieldMap[key]) || key;
+      const val = values[sourceField];
+      return (val !== undefined && val !== null && val !== '') ? val : '';
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const floatBtn  = document.getElementById('wa-floating-btn');
     const overlay   = document.getElementById('wa-modal-overlay');
@@ -265,6 +326,29 @@ step1Fields.forEach(f => {
     const dot2      = document.getElementById('wa-dot-2');
 
     if (!floatBtn || !overlay || !form) return;
+
+    // ─── Campos condicionais (showWhen) ──────────────────────────────
+    const applyConditional = (group) => {
+      const controllerName = group.dataset.showWhenField;
+      const allowedValues = JSON.parse(group.dataset.showWhenValues || '[]');
+      const controller = form.querySelector(`[name="${controllerName}"]`);
+      if (!controller) return;
+      const show = allowedValues.includes(controller.value);
+      group.style.display = show ? '' : 'none';
+      const field = group.querySelector('input, select, textarea');
+      if (field) {
+        field.required = show && field.dataset.requiredDefault === 'true';
+        if (!show) field.value = '';
+      }
+    };
+
+    const conditionalGroups = Array.from(form.querySelectorAll('[data-show-when-field]'));
+    conditionalGroups.forEach((group) => {
+      const controllerName = group.dataset.showWhenField;
+      const controller = form.querySelector(`[name="${controllerName}"]`);
+      if (controller) controller.addEventListener('change', () => applyConditional(group));
+      applyConditional(group);
+    });
 
     // ─── Abre/Fecha modal ────────────────────────────────────────────
     floatBtn.addEventListener('click', () => {
@@ -469,13 +553,25 @@ step1Fields.forEach(f => {
         window.dataLayer.push({ event: 'form_submit', form_id: 'form_whatsapp', project: projectSlug, ...payloadFields });
       }
 
-      // Mensagem WhatsApp construída dinamicamente a partir dos campos
-      const msgLines = ['Olá! Gostaria de mais informações:', ''];
-      Object.entries(data).forEach(([key, val]) => {
-        if (!val) return;
-        const label = fieldLabels[key] || (key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' '));
-        msgLines.push(`*${label}:* ${val}`);
-      });
+      // Mensagem WhatsApp: usa messageVariants (template configurável) com fallback
+      // para a lista genérica de campos, se a página não configurar variantes.
+      const valuesForTemplate = { ...data, data: dataFormatada };
+
+      let waText = null;
+      if (messageVariants.length) {
+        const variant = waSelectVariant(messageVariants, valuesForTemplate);
+        if (variant) waText = waFillTemplate(variant.template, valuesForTemplate, messageFieldMap);
+      }
+
+      if (waText === null) {
+        const msgLines = ['Olá! Gostaria de mais informações:', ''];
+        Object.entries(data).forEach(([key, val]) => {
+          if (!val) return;
+          const label = fieldLabels[key] || (key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' '));
+          msgLines.push(`*${label}:* ${val}`);
+        });
+        waText = msgLines.join('\n');
+      }
 
       // Roteamento de número por campo (ex.: espaço de interesse)
       let targetPhone = waPhone;
@@ -483,7 +579,7 @@ step1Fields.forEach(f => {
         targetPhone = routingMap[data[routingField]];
       }
 
-      const waUrl = `https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodeURIComponent(msgLines.join('\n'))}`;
+      const waUrl = `https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodeURIComponent(waText)}`;
 
       setTimeout(() => {
         closeModal();

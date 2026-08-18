@@ -44,6 +44,13 @@ const whatsAppStep1Fields = [
     ],
   },
 ];
+
+const whatsAppMessageVariants = [
+  {
+    template: 'Olá! Meu nome é {nome}, da empresa {nome_empresa}. Gostaria de solicitar um orçamento para um evento corporativo no dia {data}, para aproximadamente {qtd_convidados} pessoas.',
+  },
+];
+const whatsAppMessageFieldMap = { nome_empresa: 'empresa', qtd_convidados: 'convidados' };
 ---
 
 <Base
@@ -53,6 +60,8 @@ const whatsAppStep1Fields = [
   whatsAppStep1Fields={whatsAppStep1Fields}
   whatsAppMessage={"Olá! Vamos planejar o seu evento corporativo?\nConte um pouco sobre o que você precisa e nossa equipe te ajuda com o orçamento."}
   whatsAppPhone="5511939177766"
+  whatsAppMessageVariants={whatsAppMessageVariants}
+  whatsAppMessageFieldMap={whatsAppMessageFieldMap}
 >
 <!-- ============ NAV ============ -->
   <nav class="nav" id="nav">

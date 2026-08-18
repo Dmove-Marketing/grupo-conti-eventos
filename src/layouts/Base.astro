@@ -24,6 +24,21 @@ interface WhatsAppStep1Field {
   min?: string;
   max?: string;
   rows?: number;
+  /** Exibe/exige este campo só quando outro campo tiver um dos valores indicados */
+  showWhen?: { field: string; equalsAny: string[] };
+}
+
+interface WhatsAppFieldCondition {
+  field: string;
+  equalsAny?: string[];
+  notEqualsAny?: string[];
+}
+
+interface WhatsAppMessageVariant {
+  /** Condições combinadas com AND. Se omitido, é a variante padrão (fallback) — deve ser a última do array. */
+  when?: WhatsAppFieldCondition[];
+  /** Texto com placeholders {chave} */
+  template: string;
 }
 
 interface Props {
@@ -42,6 +57,10 @@ interface Props {
   whatsAppPhone?: string;
   /** Roteia o número de WhatsApp com base no valor de um campo do step 1 (ex.: espaço de interesse) */
   whatsAppPhoneRouting?: { field: string; map: Record<string, string> };
+  /** Variantes de template da mensagem enviada ao WhatsApp (primeira que bater `when` vence; sem `when` = fallback) */
+  whatsAppMessageVariants?: WhatsAppMessageVariant[];
+  /** Mapeia placeholder do template → nome real do campo do formulário */
+  whatsAppMessageFieldMap?: Record<string, string>;
 }
 
 const {
@@ -56,6 +75,8 @@ const {
   whatsAppMessage,
   whatsAppPhone,
   whatsAppPhoneRouting,
+  whatsAppMessageVariants,
+  whatsAppMessageFieldMap,
 } = Astro.props;
 
 import config from '../../config.json';
@@ -120,6 +141,8 @@ const defaultJsonLd = {
       welcomeMessage={whatsAppMessage}
       phone={whatsAppPhone}
       phoneRouting={whatsAppPhoneRouting}
+      messageVariants={whatsAppMessageVariants}
+      messageFieldMap={whatsAppMessageFieldMap}
     />
 
     <!-- Scripts adicionais -->

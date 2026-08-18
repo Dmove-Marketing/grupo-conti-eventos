@@ -42,6 +42,14 @@ const whatsAppStep1Fields = [
     ],
   },
   {
+    name: 'empresa',
+    type: 'text' as const,
+    label: 'Empresa',
+    placeholder: 'Nome da sua empresa',
+    required: true,
+    showWhen: { field: 'Tipo de evento', equalsAny: ['Corporativo'] },
+  },
+  {
     name: 'data',
     type: 'date' as const,
     label: 'Data do evento',
@@ -55,6 +63,38 @@ const whatsAppStep1Fields = [
     required: true,
   },
 ];
+
+const whatsAppMessageVariants = [
+  // 1) Corporativo + espaço definido
+  {
+    when: [
+      { field: 'Tipo de evento', equalsAny: ['Corporativo'] },
+      { field: 'evento', notEqualsAny: ['', 'Não sei ainda'] },
+    ],
+    template: 'Olá! Meu nome é {nome}, da empresa {nome_empresa}. Gostaria de solicitar um orçamento para o espaço {espaco_interesse} para um evento corporativo no dia {data}, para aproximadamente {qtd_convidados} pessoas.',
+  },
+  // 2) Corporativo, espaço indefinido
+  {
+    when: [{ field: 'Tipo de evento', equalsAny: ['Corporativo'] }],
+    template: 'Olá! Meu nome é {nome}, da empresa {nome_empresa}. Gostaria de ajuda para escolher o espaço ideal para o nosso evento corporativo no dia {data}, para aproximadamente {qtd_convidados} pessoas.',
+  },
+  // 3) Outro tipo de evento + espaço definido
+  {
+    when: [{ field: 'evento', notEqualsAny: ['', 'Não sei ainda'] }],
+    template: 'Olá! Meu nome é {nome} e gostaria de solicitar um orçamento para o espaço {espaco_interesse} para um evento de {tipo_evento} no dia {data}, para aproximadamente {qtd_convidados} pessoas.',
+  },
+  // 4) Fallback: outro tipo de evento, espaço indefinido
+  {
+    template: 'Olá! Meu nome é {nome} e gostaria de ajuda para escolher o espaço ideal para o meu evento de {tipo_evento} no dia {data}, para aproximadamente {qtd_convidados} pessoas.',
+  },
+];
+
+const whatsAppMessageFieldMap = {
+  nome_empresa: 'empresa',
+  tipo_evento: 'Tipo de evento',
+  qtd_convidados: 'Convidados',
+  espaco_interesse: 'evento',
+};
 ---
 
 <Base
@@ -75,6 +115,8 @@ const whatsAppStep1Fields = [
       'Não sei ainda': '5511939177766',
     },
   }}
+  whatsAppMessageVariants={whatsAppMessageVariants}
+  whatsAppMessageFieldMap={whatsAppMessageFieldMap}
 >
 
   <!-- HERO -->
