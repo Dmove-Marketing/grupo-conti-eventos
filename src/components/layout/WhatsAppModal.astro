@@ -35,6 +35,16 @@ interface Props {
   step1Fields?: Step1Field[];
   /** Mensagem de boas-vindas exibida no modal (quebra de linha com \n) */
   welcomeMessage?: string;
+  /** Número de WhatsApp (com DDI+DDD, só dígitos) — sobrescreve config.json > whatsapp.phone para esta página */
+  phone?: string;
+  /**
+   * Roteia o número de WhatsApp com base no valor escolhido em um campo do step1Fields
+   * (ex.: select "Espaço de interesse"). Se o valor não estiver no map, usa `phone`/config.
+   */
+  phoneRouting?: {
+    field: string;
+    map: Record<string, string>;
+  };
 }
 
 const {
@@ -53,9 +63,13 @@ const {
     },
   ],
   welcomeMessage = 'Olá! Como posso te ajudar?\nPreencha os campos abaixo e vamos conversar pelo WhatsApp.',
+  phone,
+  phoneRouting,
 } = Astro.props;
 
-const waPhone   = config.whatsapp?.phone        || '5511999999999';
+const waPhone       = phone || config.whatsapp?.phone || '5511999999999';
+const routingField  = phoneRouting?.field || '';
+const routingMap    = phoneRouting?.map   || {};
 const waName    = config.whatsapp?.display_name || config.project_name || 'Atendimento';
 const waAvatar  = config.whatsapp?.avatar       || '/images/whatsapp-avatar.jpg';
 const waEnabled = config.whatsapp?.enabled !== false;
@@ -236,7 +250,7 @@ step1Fields.forEach(f => {
 </div>
 )}
 
-<script is:inline define:vars={{ webhookUrl, projectSlug, waPhone, fieldLabels }}>
+<script is:inline define:vars={{ webhookUrl, projectSlug, waPhone, fieldLabels, routingField, routingMap }}>
   document.addEventListener('DOMContentLoaded', () => {
     const floatBtn  = document.getElementById('wa-floating-btn');
     const overlay   = document.getElementById('wa-modal-overlay');
@@ -463,7 +477,13 @@ step1Fields.forEach(f => {
         msgLines.push(`*${label}:* ${val}`);
       });
 
-      const waUrl = `https://api.whatsapp.com/send?phone=${waPhone}&text=${encodeURIComponent(msgLines.join('\n'))}`;
+      // Roteamento de número por campo (ex.: espaço de interesse)
+      let targetPhone = waPhone;
+      if (routingField && data[routingField] && routingMap[data[routingField]]) {
+        targetPhone = routingMap[data[routingField]];
+      }
+
+      const waUrl = `https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodeURIComponent(msgLines.join('\n'))}`;
 
       setTimeout(() => {
         closeModal();

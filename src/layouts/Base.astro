@@ -38,6 +38,10 @@ interface Props {
   whatsAppStep1Fields?: WhatsAppStep1Field[];
   /** Mensagem de boas-vindas do popup WhatsApp (use \n para quebrar linha) */
   whatsAppMessage?: string;
+  /** Número de WhatsApp desta página (DDI+DDD+número, só dígitos) — sobrescreve config.json > whatsapp.phone */
+  whatsAppPhone?: string;
+  /** Roteia o número de WhatsApp com base no valor de um campo do step 1 (ex.: espaço de interesse) */
+  whatsAppPhoneRouting?: { field: string; map: Record<string, string> };
 }
 
 const {
@@ -50,6 +54,8 @@ const {
   jsonLd,
   whatsAppStep1Fields,
   whatsAppMessage,
+  whatsAppPhone,
+  whatsAppPhoneRouting,
 } = Astro.props;
 
 import config from '../../config.json';
@@ -112,6 +118,8 @@ const defaultJsonLd = {
     <WhatsAppModal
       step1Fields={whatsAppStep1Fields}
       welcomeMessage={whatsAppMessage}
+      phone={whatsAppPhone}
+      phoneRouting={whatsAppPhoneRouting}
     />
 
     <!-- Scripts adicionais -->
