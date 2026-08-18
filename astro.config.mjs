@@ -9,7 +9,4 @@ export default defineConfig({
   server: {
     port: 4321,
   },
-  redirects: {
-    '/casamentos': '/',
-  },
 });
