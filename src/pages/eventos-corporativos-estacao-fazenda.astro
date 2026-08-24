@@ -1,0 +1,587 @@
+---
+// Duplicado de casamento-estacao-fazenda.astro — página independente (HTML/CSS/JS próprios, sem compartilhamento)
+import Base from '../layouts/Base.astro';
+import config from '../../config.json';
+import '../styles/eventos-corporativos-estacao-fazenda.css';
+
+const whatsAppStep1Fields = [
+  {
+    name: 'empresa',
+    type: 'text' as const,
+    label: 'Empresa',
+    placeholder: 'Nome da sua empresa',
+    required: true,
+  },
+  {
+    name: 'data',
+    type: 'date' as const,
+    label: 'Data do evento',
+    required: true,
+  },
+  {
+    name: 'convidados',
+    type: 'number' as const,
+    label: 'Nº de convidados',
+    placeholder: 'Nº de pessoas',
+    required: true,
+  },
+  {
+    name: 'evento',
+    type: 'select' as const,
+    label: 'Tipo de evento',
+    required: true,
+    options: [
+      { value: '', label: 'Selecione o tipo de evento', disabled: true, selected: true },
+      { value: 'Confraternização corporativo', label: 'Confraternização corporativo' },
+      { value: 'Corporativo', label: 'Corporativo' },
+      { value: 'Feiras e Exposições', label: 'Feiras e Exposições' },
+      { value: 'Masterclass e Palestras', label: 'Masterclass e Palestras' },
+      { value: 'Mentorias e Treinamentos', label: 'Mentorias e Treinamentos' },
+      { value: 'Offsite corporativo', label: 'Offsite corporativo' },
+      { value: 'Reuniões de Networking', label: 'Reuniões de Networking' },
+      { value: 'Workshops, Conferências e Seminários', label: 'Workshops, Conferências e Seminários' },
+      { value: 'Outros', label: 'Outros' },
+    ],
+  },
+];
+
+const whatsAppMessageVariants = [
+  {
+    template: 'Olá! Meu nome é {nome}, da empresa {nome_empresa}. Gostaria de solicitar um orçamento para um evento corporativo na Estação Fazenda no dia {data}, para aproximadamente {qtd_convidados} pessoas.',
+  },
+];
+const whatsAppMessageFieldMap = { nome_empresa: 'empresa', qtd_convidados: 'convidados' };
+---
+
+<Base
+  title="Grupo Conti | Eventos Corporativos na Estação Fazenda em Jarinu"
+  description="Espaço para até 200 convidados em Jarinu, a 1 hora de São Paulo. Estrutura completa, gastronomia própria e atendimento consultivo para eventos corporativos. Solicite um orçamento."
+  ogImage="/images/og-eventos-corporativos-estacao-fazenda.jpg"
+  whatsAppStep1Fields={whatsAppStep1Fields}
+  whatsAppMessage={"Olá! Vamos planejar o seu evento corporativo na Estação Fazenda?\nConte um pouco sobre o que você precisa e nossa equipe te ajuda com o orçamento."}
+  whatsAppPhone="5511915494646"
+  whatsAppMessageVariants={whatsAppMessageVariants}
+  whatsAppMessageFieldMap={whatsAppMessageFieldMap}
+>
+<!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="#topo" class="nav-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Claro.webp" alt="Grupo Conti" /></a>
+    <a href="#contato" class="nav-cta">Solicite orçamento</a>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="topo">
+    <img class="hero-bg" src="https://media.dmove.com.br/clients/grupo-conti/photos/hero-estacao-fazenda_corporativo_resultado.webp" alt="Eventos Corporativos na Estação Fazenda" />
+    <div class="hero-scrim"></div>
+    <div class="hero-content">
+      <span class="hero-tags">Eventos Corporativos &nbsp;•&nbsp; Jarinu &nbsp;•&nbsp; São Paulo</span>
+      <h1>Estrutura, conforto e <br class="desktop-br" /><br class="mobile-br" />versatilidade para<br class="desktop-br" /><br class="mobile-br" />receber eventos <br class="mobile-br" />corporativos <br class="desktop-br" />de <br class="mobile-br" />diferentes formatos</h1>
+    </div>
+
+    <!-- Formulário exclusivo da hero — visível apenas no desktop (>=1024px), duplicado do formulário da seção #contato com ids próprios -->
+    <div class="hero-form">
+      <div class="hero-form-card">
+        <h2>Solicite uma proposta</h2>
+        <form
+          id="heroContactForm"
+          data-form-id="lead-form-hero"
+          data-project={config.project_slug}
+          data-submit-url={config.forms['lead-form'].webhooks[0]}
+          data-redirect={config.forms['lead-form'].redirect_on_success}
+          data-grid-id="heroContactForm"
+          data-success-id="heroFormConfirm"
+          novalidate
+        >
+          <div class="hp-field" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+            <label for="heroContactForm_website">Deixe este campo em branco</label>
+            <input type="text" id="heroContactForm_website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="form-grid">
+            <div class="field field--full">
+              <label for="hero-nome">Nome</label>
+              <input id="hero-nome" name="nome" type="text" placeholder="Seu nome completo" required>
+            </div>
+            <div class="field">
+              <label for="hero-telefone">Telefone</label>
+              <input id="hero-telefone" name="telefone" type="tel" placeholder="(11) 9 0000-0000" required>
+            </div>
+            <div class="field">
+              <label for="hero-email">E-mail</label>
+              <input id="hero-email" name="email" type="email" placeholder="seu@email.com" required>
+            </div>
+            <div class="field field--full">
+              <label for="hero-empresa">Nome da empresa</label>
+              <input id="hero-empresa" name="empresa" type="text" placeholder="Nome da sua empresa" required>
+            </div>
+            <div class="field">
+              <label for="hero-data">Data do evento</label>
+              <input id="hero-data" name="data" type="date" required>
+            </div>
+            <div class="field">
+              <label for="hero-convidados">Nº de convidados</label>
+              <input id="hero-convidados" name="convidados" type="number" min="1" placeholder="Nº de pessoas" required>
+            </div>
+            <div class="field field--full">
+              <label for="hero-evento">Tipo de evento</label>
+              <select id="hero-evento" name="evento" required>
+                <option value="" disabled selected>Selecione o tipo de evento</option>
+                <option value="Confraternização corporativo">Confraternização corporativo</option>
+                <option value="Corporativo">Corporativo</option>
+                <option value="Feiras e Exposições">Feiras e Exposições</option>
+                <option value="Masterclass e Palestras">Masterclass e Palestras</option>
+                <option value="Mentorias e Treinamentos">Mentorias e Treinamentos</option>
+                <option value="Offsite corporativo">Offsite corporativo</option>
+                <option value="Reuniões de Networking">Reuniões de Networking</option>
+                <option value="Workshops, Conferências e Seminários">Workshops, Conferências e Seminários</option>
+                <option value="Outros">Outros</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-block form-submit" style="margin-top:22px">
+            <span class="btn-text">Solicitar Orçamento</span>
+            <span class="btn-loading" style="display:none; align-items: center; justify-content: center; gap: 8px;">
+              <svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+              </svg>
+              Enviando...
+            </span>
+          </button>
+          <div class="form-error" style="color: #ef4444; font-size: 0.875rem; margin-top: 4px; display: none;"></div>
+        </form>
+        <div class="form-confirm" id="heroFormConfirm">
+          <h3>Recebemos sua solicitação!</h3>
+          <p>Em breve nossa equipe entrará em contato para dar continuidade ao planejamento do seu evento corporativo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUTORIDADE ============ -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 2.5-5 6-5s6 2 6 5M15 15c2.8 0 5 1.7 5 5"/></svg>
+      </div>
+      <span class="stat-value">Até 200 convidados</span>
+    </div>
+    <div class="stat">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg>
+      </div>
+      <span class="stat-value">Solução completa</span>
+    </div>
+    <div class="stat">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      </div>
+      <span class="stat-value">Apenas 1 hora de São Paulo</span>
+    </div>
+  </div>
+
+  <!-- ============ SOBRE ============ -->
+  <section class="about" id="sobre">
+    <div class="about-copy" data-reveal>
+      <span class="eyebrow eyebrow--gold">Sobre</span>
+      <h2>Seu evento corporativo <br />merece mais do que<br />um espaço convencional</h2>
+      <p>A Estação Fazenda foi planejada para receber empresas que buscam um ambiente diferenciado para encontros, confraternizações, treinamentos e celebrações.<br>
+      Com uma estrutura ampla e integrada à natureza, o espaço oferece mais liberdade para criar diferentes formatos de eventos, com conforto para convidados e praticidade para as equipes responsáveis pela organização.</p>
+      <a href="#contato" class="btn btn-outline" style="margin-top:26px;align-self:flex-start">Agende uma visita</a>
+    </div>
+    <div class="about-media">
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/sobre-estacao-fazenda_corporativo.webp" alt="Sobre a Estação Fazenda" loading="lazy" style="object-position: center bottom !important;" />
+    </div>
+  </section>
+
+  <!-- ============ ESTRUTURA (espaços com foto) ============ -->
+  <section class="section section--navy" id="estrutura">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold-onavy">Estrutura</span>
+      <h2>Versatilidade para <br class="mobile-br" />transformar <br class="desktop-br" />diferentes <br class="mobile-br" />ideias em eventos</h2>
+    </div>
+    <div class="exp-grid">
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/salao-principal-estacao-fazenda_corporativo_resultado.webp" alt="Salão principal" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Salão principal</h3>
+          <p>Espaço amplo e versátil, que pode ser adaptado a diferentes formatos e propostas de eventos.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/area-externa-estacao-fazenda_corporativo_resultado.webp" alt="Áreas externas e jardins" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Áreas externas e jardins</h3>
+          <p>Espaços ao ar livre que ampliam as possibilidades de ambientação e tornam o evento ainda mais especial.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/camarim-estacao-fazenda_corporativo.webp" alt="Camarins e áreas de apoio" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Camarins e áreas de apoio</h3>
+          <p>Ambientes reservados para dar suporte à organização, produção e preparação das equipes durante o evento, com mais praticidade e conforto.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/estrutura-estacao-fazenda_corporativo.webp" alt="Estrutura completa" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Estrutura completa</h3>
+          <p>150 vagas, cozinha profissional e área kids.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ EVENTOS (tipos de evento) ============ -->
+  <section class="section section--cream" id="eventos">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Para quem organiza eventos</span>
+      <h2>Estrutura para diferentes <br class="desktop-br" /><br class="mobile-br" />objetivos e formatos</h2>
+    </div>
+    <div class="icons-grid">
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M8 22h8" />
+            <path d="M7 10h10" />
+            <path d="M12 15v7" />
+            <path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5Z" />
+          </svg>
+        </div>
+        <span>Confraternizações</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M12 7v14" />
+            <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+          </svg>
+        </div>
+        <span>Treinamentos e convenções</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+        <span>Eventos de relacionamento</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 2l2.9 6.6L22 9.3l-5 4.9 1.2 7.1L12 17.8 5.8 21.3 7 14.2 2 9.3l7.1-.7L12 2Z"/></svg>
+        </div>
+        <span>Celebrações corporativas</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M21 9a2.4 2.4 0 0 0-.706-1.706l-3.588-3.588A2.4 2.4 0 0 0 15 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z" />
+            <path d="M15 3v5a1 1 0 0 0 1 1h5" />
+          </svg>
+        </div>
+        <span>Workshops e palestras</span>
+      </div>
+
+      <div class="icon-item" data-reveal>
+        <div class="structure-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D2B589" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 2c3 2 5 6 5 10 0 2-1 4-2 5l-3 3-3-3c-1-1-2-3-2-5 0-4 2-8 5-10Z"/><circle cx="12" cy="10" r="1.5"/><path d="M9 17l-3 4M15 17l3 4"/></svg>
+        </div>
+        <span>Lançamentos e ativações de marca</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ HOSPEDAGEM ============ -->
+  <section class="section section--offwhite" id="hospedagem">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Hospedagem</span>
+      <h2>Mais comodidade para <br class="mobile-br" />programações <br class="desktop-br" />que vão <br class="mobile-br" />além do evento</h2>
+      <p class="lede" style="margin:22px auto 0;max-width:680px;text-wrap:pretty">Quando o planejamento pede mais tempo de integração, a Estação Fazenda conta com hospedagem parceira a menos de 5 minutos do espaço. Uma alternativa para empresas que desejam organizar programações corporativas com mais tranquilidade e comodidade para seus&nbsp;convidados.</p>
+    </div>
+  </section>
+
+  <!-- ============ SOLUÇÃO COMPLETA ============ -->
+  <section class="section section--navy" id="solucao-completa">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold-onavy">Solução completa</span>
+      <h2>Suporte e organização para <br class="desktop-br" /><br class="mobile-br" />simplificar cada etapa</h2>
+      <p class="lede" style="margin-top:22px">Reunir estrutura, serviços e suporte em um único local torna a organização mais simples e permite que sua equipe se concentre no que realmente importa: o objetivo do evento.</p>
+    </div>
+    <div class="exp-grid exp-grid--3">
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/gastronomia-propria-estacao-fazenda_corporativo.webp" alt="Gastronomia própria" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Gastronomia própria</h3>
+          <p>Assinado pelo <b>Chef Evandro Luiz</b>, o buffet próprio da Conti oferece uma estrutura gastronômica preparada para atender diferentes formatos de eventos corporativos, com opções alinhadas à proposta de cada ocasião.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/atendimento-consultivo-estacao-fazenda_corporativo.webp" alt="Atendimento consultivo" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Atendimento consultivo</h3>
+          <p>Uma equipe preparada para acompanhar o planejamento e entender as necessidades da empresa, oferecendo mais segurança e praticidade em cada etapa.</p>
+        </div>
+      </div>
+
+      <div class="exp-card" data-reveal>
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/estrutura-integrada-estacao-fazenda_corporativo_resultado.webp" alt="Estrutura integrada" loading="lazy" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;" />
+        <div class="exp-card-body">
+          <h3>Estrutura integrada</h3>
+          <p>Espaço, buffet, mobiliário, iluminação, sonorização e outros serviços podem ser organizados de acordo com a proposta e as necessidades do evento.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PARCEIROS ============ -->
+  <section class="section section--offwhite" id="parceiros" style="padding-bottom:80px">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Parceiros</span>
+      <h2>Empresas que já escolheram <br class="desktop-br" /><br class="mobile-br" />a Estação Fazenda</h2>
+    </div>
+    <div class="partners-track" data-reveal>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/bbc-logo-corporativo.webp" alt="BBC" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Wetn-Wild-logo-corporativo.webp" alt="Wet'n Wild" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/vedacit-logo-corporativo.webp" alt="Vedacit" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/UOL-logo-corporativo.webp" alt="UOL" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/skeelo-logo-corporativo.webp" alt="Skeelo" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/renal-logo-corporativo.webp" alt="Renal" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/manzini-logo-corporativo.webp" alt="Manzini" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/LanXess-logo-corporativo.webp" alt="LANXESS" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/knauf-logo-corporativo.webp" alt="Knauf" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/dcbm-logo-corporativo.webp" alt="DCBM" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/codinter-logo-corporativo.webp" alt="Codinter" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/papion-logo-corporativo.webp" alt="Papion" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/hexis-logo-corporativo.webp" alt="Hexis" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/dana-logo-corporativo.webp" alt="Dana" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/castelo-logo-corporativo.webp" alt="Castelo" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/bosch-logo-corporativo.webp" alt="Bosch" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/logo-azul-corporativo.webp" alt="Azul" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+      <div class="partner-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/logo-agc-corporativo.webp" alt="AGC" loading="lazy" style="width:100%;height:100%;object-fit:contain;" /></div>
+    </div>
+  </section>
+
+  <!-- ============ DEPOIMENTOS ============ -->
+  <!-- depoimentos reaproveitados de eventos-corporativos.astro (avaliações genéricas sobre os espaços) —
+       substituir por avaliações Google específicas da Estação Fazenda assim que o cliente enviar -->
+  <section class="testimonials" id="depoimentos">
+    <div class="center" data-reveal style="max-width:960px">
+      <span class="eyebrow">Depoimentos</span>
+      <h2>Quem já realizou <br class="mobile-br" />um evento aqui <br class="desktop-br" /><br class="mobile-br" />recomenda</h2>
+    </div>
+    <div class="testi-controls">
+      <button class="testi-btn testi-prev" id="testiPrev" aria-label="Anterior">‹</button>
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <p>"Maravilhosos! Desde o dia em que fomos visitar o local, fomos surpreendidos positivamente. A equipe é extremamente atenciosa, prestativa e sempre disposta a ajudar em cada detalhe da organização."</p>
+          <span>Marian</span>
+        </div>
+        <div class="testi-card">
+          <p>"A comida é deliciosa e de altíssima qualidade. Todos os nossos convidados, sem exceção, elogiaram muito o buffet. Além disso, a equipe teve muita presteza em adaptar o cardápio para restrições alimentares."</p>
+          <span>Marina</span>
+        </div>
+        <div class="testi-card">
+          <p>"O espaço conta com um plano A e B excelentes caso chova, sendo muito bem planejado. Não tivemos nenhuma preocupação com o clima, pois a estrutura coberta e a área aberta são igualmente incríveis."</p>
+          <span>Flavia</span>
+        </div>
+        <div class="testi-card">
+          <p>"Lugar maravilhoso, espaçoso e muito aconchegante. Toda a equipe é super alinhada e pronta para servir, o que garantiu que a nossa programação fluísse sem nenhum tipo de atraso ou imprevisto."</p>
+          <span>Fernando</span>
+        </div>
+        <div class="testi-card">
+          <p>"O espaço é espetacular e muito moderno. A facilidade de ter o buffet completo, som, iluminação e assessoria inclusos no mesmo pacote facilitou demais o nosso planejamento e reduziu muito o estresse da organização."</p>
+          <span>Amanda</span>
+        </div>
+        <div class="testi-card">
+          <p>"O salão principal é amplo e perfeito para palestras e dinâmicas de grupo, enquanto a área externa com muito verde ajuda demais no momento de descompressão dos participantes. Um ambiente muito versátil."</p>
+          <span>Ricardo</span>
+        </div>
+        <div class="testi-card">
+          <p>"A estrutura é impecável. O estacionamento é amplo e de fácil acesso para os carros e ônibus fretados, e o suporte que recebemos da equipe local do início ao fim foi excelente."</p>
+          <span>Priscila</span>
+        </div>
+        <div class="testi-card">
+          <p>"Desde o primeiro contato o atendimento foi impecável e muito atencioso. A equipe de apoio no dia mostrou um extremo profissionalismo, deixando todos muito confortáveis."</p>
+          <span>Rafaela</span>
+        </div>
+        <div class="testi-card">
+          <p>"Escolhemos o local pela excelente estrutura de hospedagem e pela oportunidade de fazer uma imersão completa na natureza. A casa sede histórica é maravilhosa e muito bem cuidada."</p>
+          <span>Daniela</span>
+        </div>
+        <div class="testi-card">
+          <p>"Lugar lindo, amplo e muito aconchegante. A flexibilidade de usar os gramados para dinâmicas ao ar livre e o salão principal para as reuniões formais atendeu perfeitamente ao que precisávamos."</p>
+          <span>Helen</span>
+        </div>
+      </div>
+      <button class="testi-btn testi-next" id="testiNext" aria-label="Próximo">›</button>
+    </div>
+  </section>
+
+  <!-- ============ GALERIA ============ -->
+  <section class="section section--cream" id="galeria" style="padding-bottom:48px">
+    <div class="center" data-reveal>
+      <span class="eyebrow eyebrow--gold">Galeria</span>
+      <h2>Veja onde sua próxima <br class="desktop-br" /><br class="mobile-br" />reunião de equipe<br class="desktop-br" /><br class="mobile-br" />pode acontecer</h2>
+    </div>
+  </section>
+  <div class="gallery-carousel">
+    <button class="gallery-btn gallery-prev" id="galleryPrev" aria-label="Anterior">‹</button>
+    <div class="gallery-track">
+      <img class="gallery-wide" src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-estacao-fazenda-corporativo10.webp" alt="Eventos Corporativos na Estação Fazenda" loading="lazy" style="object-position: bottom center !important;" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-estacao-fazenda-corporativo09.webp" alt="Eventos Corporativos na Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-estacao-fazenda-corporativo08.webp" alt="Eventos Corporativos na Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-estacao-fazenda-corporativo07.webp" alt="Eventos Corporativos na Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-estacao-fazenda-corporativo06.webp" alt="Eventos Corporativos na Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-estacao-fazenda-corporativo05.webp" alt="Eventos Corporativos na Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-estacao-fazenda-corporativo04_resultado.webp" alt="Eventos Corporativos na Estação Fazenda" loading="lazy" />
+      <img class="gallery-wide" src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-estacao-fazenda-corporativo03_resultado.webp" alt="Eventos Corporativos na Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-estacao-fazenda-corporativo02_resultado.webp" alt="Eventos Corporativos na Estação Fazenda" loading="lazy" />
+      <img src="https://media.dmove.com.br/clients/grupo-conti/photos/galeria-estacao-fazenda-corporativo01_resultado.webp" alt="Eventos Corporativos na Estação Fazenda" loading="lazy" />
+    </div>
+    <button class="gallery-btn gallery-next" id="galleryNext" aria-label="Próximo">›</button>
+  </div>
+
+  <!-- ============ CONTATO ============ -->
+  <section class="contact" id="contato">
+    <div class="contact-info" data-reveal>
+      <span class="eyebrow eyebrow--gold">Próximo passo</span>
+      <h2>Vamos planejar o próximo <br class="desktop-br" /><br class="mobile-br" />evento da sua empresa?</h2>
+      <p>Preencha o formulário e receba um atendimento personalizado para conhecer a Estação Fazenda e encontrar a melhor estrutura para sua necessidade.</p>
+    </div>
+    <div class="contact-form-wrap">
+      <form
+        id="contactForm"
+        data-form-id="lead-form"
+        data-project={config.project_slug}
+        data-submit-url={config.forms['lead-form'].webhooks[0]}
+        data-redirect={config.forms['lead-form'].redirect_on_success}
+        data-grid-id="contactForm"
+        data-success-id="formConfirm"
+        novalidate
+      >
+        <div class="hp-field" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+          <label for="contactForm_website">Deixe este campo em branco</label>
+          <input type="text" id="contactForm_website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="form-grid">
+          <div class="field field--full">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome completo" required>
+          </div>
+          <div class="field">
+            <label for="telefone">Telefone</label>
+            <input id="telefone" name="telefone" type="tel" placeholder="(11) 9 0000-0000" required>
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" placeholder="seu@email.com" required>
+          </div>
+          <div class="field field--full">
+            <label for="empresa">Nome da empresa</label>
+            <input id="empresa" name="empresa" type="text" placeholder="Nome da sua empresa" required>
+          </div>
+          <div class="field">
+            <label for="data">Data do evento</label>
+            <input id="data" name="data" type="date" required>
+          </div>
+          <div class="field">
+            <label for="convidados">Nº de convidados</label>
+            <input id="convidados" name="convidados" type="number" min="1" placeholder="Nº de pessoas" required>
+          </div>
+          <div class="field field--full">
+            <label for="evento">Tipo de evento</label>
+            <select id="evento" name="evento" required>
+              <option value="" disabled selected>Selecione o tipo de evento</option>
+              <option value="Confraternização corporativo">Confraternização corporativo</option>
+              <option value="Corporativo">Corporativo</option>
+              <option value="Feiras e Exposições">Feiras e Exposições</option>
+              <option value="Masterclass e Palestras">Masterclass e Palestras</option>
+              <option value="Mentorias e Treinamentos">Mentorias e Treinamentos</option>
+              <option value="Offsite corporativo">Offsite corporativo</option>
+              <option value="Reuniões de Networking">Reuniões de Networking</option>
+              <option value="Workshops, Conferências e Seminários">Workshops, Conferências e Seminários</option>
+              <option value="Outros">Outros</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block form-submit" style="margin-top:22px">
+          <span class="btn-text">Solicitar Orçamento</span>
+          <span class="btn-loading" style="display:none; align-items: center; justify-content: center; gap: 8px;">
+            <svg class="spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+            </svg>
+            Enviando...
+          </span>
+        </button>
+        <p class="form-note">Seus dados são usados apenas para retorno de contato e orçamento.</p>
+        <div class="form-error" style="color: #ef4444; font-size: 0.875rem; margin-top: 4px; display: none;"></div>
+      </form>
+      <div class="form-confirm" id="formConfirm">
+        <h3>Recebemos sua solicitação!</h3>
+        <p>Em breve nossa equipe entrará em contato para dar continuidade ao planejamento do seu evento corporativo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOCALIZAÇÃO ============ -->
+  <section class="section section--offwhite" id="localizacao">
+    <div class="center--wide" data-reveal>
+      <span class="eyebrow eyebrow--gold">Localização</span>
+      <h2>Um espaço fora da rotina, <br class="desktop-br" /><br class="mobile-br" />a poucos quilômetros<br class="desktop-br" /><br class="mobile-br" />de São Paulo</h2>
+    </div>
+    <div class="location-grid">
+
+      <div class="location-card" data-reveal>
+        <h3>Estação Fazenda</h3>
+        <address>Estr. Mun. Natal Lorencini - Pitangal, Jarinu - SP, 13240-000</address>
+        <div class="location-map">
+          <iframe src="https://maps.google.com/maps?q=Estr.%20Mun.%20Natal%20Lorencini%20-%20Pitangal%2C%20Jarinu%20-%20SP%2C%2013240-000&t=m&z=15&output=embed&iwloc=near" title="Estação Fazenda — Localização" loading="lazy"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <a href="#topo" class="footer-logo"><img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logo-Conti-Preferencial-Claro.webp" alt="Grupo Conti" /></a>
+    <p class="footer-copy">© 2026 Grupo Conti — Todos os direitos reservados.</p>
+    <div class="footer-dev">
+      <span>Desenvolvido por:</span>
+      <a href="http://dmove.com.br" target="_blank" rel="noopener noreferrer">
+        <img src="https://media.dmove.com.br/clients/grupo-conti/photos/Logotipo-dmove.webp" alt="DMove" style="height: 18px; width: auto; display: inline-block; vertical-align: middle;" />
+      </a>
+    </div>
+  </footer>
+
+</Base>
+<script>
+  import { initForms } from '../scripts/forms.ts';
+  import '../scripts/eventos-corporativos-estacao-fazenda.js';
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initForms);
+  } else {
+    initForms();
+  }
+</script>
