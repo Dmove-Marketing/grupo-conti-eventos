@@ -241,6 +241,9 @@
     object-position: center center !important;
     display: block;
   }
+  .gallery-track img.gallery-focus-bottom{
+    object-position: center bottom !important;
+  }
   .gallery-btn{display:none}
 
   /* galeria mosaico — 2 fotos em destaque ocupam 2 colunas para preencher as 10 imagens sem sobrar espaço na grade 4 colunas */
@@ -353,6 +356,9 @@
       object-fit: cover !important;
       user-select: none;
       -webkit-user-drag: none;
+    }
+    .gallery-track img.gallery-focus-bottom{
+      object-position: center bottom !important;
     }
     .gallery-btn{
       display: flex;
