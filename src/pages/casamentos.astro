@@ -6,6 +6,32 @@ import '../styles/casamentos.css';
 
 const whatsAppStep1Fields = [
   {
+    name: 'evento',
+    type: 'select' as const,
+    label: 'Tipo de evento',
+    required: true,
+    options: [
+      { value: '', label: 'Selecione o tipo de evento', disabled: true, selected: true },
+      { value: 'Bodas', label: 'Bodas' },
+      { value: 'Casamento', label: 'Casamento' },
+      { value: 'Confraternização social', label: 'Confraternização social' },
+      { value: 'Outros', label: 'Outros' },
+    ],
+  },
+  {
+    name: 'Espaço de interesse',
+    type: 'select' as const,
+    label: 'Espaço de interesse',
+    required: true,
+    options: [
+      { value: '', label: 'Selecione o espaço', disabled: true, selected: true },
+      { value: 'Fazenda Santa Isabel', label: 'Fazenda Santa Isabel' },
+      { value: 'Recanto das Palmeiras', label: 'Recanto das Palmeiras' },
+      { value: 'Estação Fazenda', label: 'Estação Fazenda' },
+      { value: 'Ainda não decidi', label: 'Ainda não decidi' },
+    ],
+  },
+  {
     name: 'data',
     type: 'date' as const,
     label: 'Data do evento',
@@ -18,26 +44,22 @@ const whatsAppStep1Fields = [
     placeholder: 'Nº de pessoas',
     required: true,
   },
-  {
-    name: 'evento',
-    type: 'select' as const,
-    label: 'Espaço de interesse',
-    required: true,
-    options: [
-      { value: '', label: 'Selecione o espaço', disabled: true, selected: true },
-      { value: 'Fazenda Santa Isabel', label: 'Fazenda Santa Isabel' },
-      { value: 'Recanto das Palmeiras', label: 'Recanto das Palmeiras' },
-      { value: 'Estação Fazenda', label: 'Estação Fazenda' },
-    ],
-  },
 ];
 
 const whatsAppMessageVariants = [
   {
-    template: 'Olá! Meu nome é {nome} e gostaria de solicitar um orçamento para um evento de casamento no dia {data}, para aproximadamente {qtd_convidados} convidados.',
+    when: [{ field: 'Espaço de interesse', notEqualsAny: ['', 'Ainda não decidi'] }],
+    template: 'Olá! Meu nome é {nome} e gostaria de solicitar um orçamento para um evento de {tipo_evento} no espaço {espaco_interesse}, no dia {data}, para aproximadamente {qtd_convidados} convidados.',
+  },
+  {
+    template: 'Olá! Meu nome é {nome} e gostaria de solicitar um orçamento para um evento de {tipo_evento} no dia {data}, para aproximadamente {qtd_convidados} convidados. Ainda preciso de ajuda para escolher o espaço ideal.',
   },
 ];
-const whatsAppMessageFieldMap = { qtd_convidados: 'convidados' };
+const whatsAppMessageFieldMap = {
+  qtd_convidados: 'convidados',
+  tipo_evento: 'evento',
+  espaco_interesse: 'Espaço de interesse',
+};
 ---
 
 <Base
@@ -434,6 +456,16 @@ const whatsAppMessageFieldMap = { qtd_convidados: 'convidados' };
               <option value="Casamento">Casamento</option>
               <option value="Confraternização social">Confraternização social</option>
               <option value="Outros">Outros</option>
+            </select>
+          </div>
+          <div class="field field--full">
+            <label for="espaco">Espaço de interesse</label>
+            <select id="espaco" name="Espaço de interesse" required>
+              <option value="" disabled selected>Selecione o espaço</option>
+              <option value="Fazenda Santa Isabel">Fazenda Santa Isabel</option>
+              <option value="Recanto das Palmeiras">Recanto das Palmeiras</option>
+              <option value="Estação Fazenda">Estação Fazenda</option>
+              <option value="Ainda não decidi">Ainda não decidi</option>
             </select>
           </div>
         </div>
